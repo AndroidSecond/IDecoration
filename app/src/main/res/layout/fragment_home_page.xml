@@ -9,17 +9,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
+        <com.haipeng.decoration.widget.viewpager.MyNavigationViewPager
+            android:id="@+id/view_pager_navigation"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/colorGreen" />
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_horizontal"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@color/colorRed" />
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_vertical"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:background="@color/colorGreen" />

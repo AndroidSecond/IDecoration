@@ -3,12 +3,17 @@ package com.haipeng.decoration.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainFragment;
+import com.haipeng.decoration.helper.fragmenthelper.HomePageFragmentViewHelper;
+import com.haipeng.decoration.helper.fragmenthelper.HomePagerFragementController;
+import com.haipeng.decoration.widget.viewpager.MyNavigationViewPager;
+import com.haipeng.decoration.widget.viewpager.MyNavigationViewPagerAdapter;
 
 public class HomePageFragment extends BaseMainFragment {
     private static final String ARG_PARAM1 = "param1";
@@ -18,9 +23,13 @@ public class HomePageFragment extends BaseMainFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
-    public HomePageFragment() {
-    }
+    private HomePageFragmentViewHelper viewHelper;
+    private HomePagerFragementController mController;
+    public MyNavigationViewPagerAdapter mPagerAdapter;
+    public View mContentView;
+    public MyNavigationViewPager navigationViewPager;
+    public RecyclerView horizontalRecyclerView;
+    public RecyclerView verticalRecyclerView;
 
     public static HomePageFragment newInstance(String param1, String param2) {
         HomePageFragment fragment = new HomePageFragment();
@@ -43,7 +52,10 @@ public class HomePageFragment extends BaseMainFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        mContentView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        viewHelper = new HomePageFragmentViewHelper(this);
+        mController = new HomePagerFragementController(this, viewHelper);
+        return mContentView;
     }
 
     public void onButtonPressed(Uri uri) {
