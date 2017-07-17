@@ -5,16 +5,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.haipeng.decoration.utils.CountUtils;
+
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/7/10.
  */
 
-public class MyNavigationViewPagerAdapter extends PagerAdapter{
+public class MyNavigationViewPagerAdapter extends PagerAdapter {
 
 
     List<ImageView> mViewList;
+
     public MyNavigationViewPagerAdapter(List<ImageView> viewList) {
         mViewList = viewList;
     }
@@ -31,16 +34,18 @@ public class MyNavigationViewPagerAdapter extends PagerAdapter{
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(mViewList.get(position));
+        int preNum = CountUtils.num < 0 ? 3 : CountUtils.num;
+        container.removeView(mViewList.get(preNum));
 
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(mViewList.get(position));
+//        container.removeView();
+        container.removeView(mViewList.get(CountUtils.num));
+        container.addView(mViewList.get(CountUtils.num));
 
-        return mViewList.get(position);
+        return mViewList.get(CountUtils.num);
     }
-
 
 }
