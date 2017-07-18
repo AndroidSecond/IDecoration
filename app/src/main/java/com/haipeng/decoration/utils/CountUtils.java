@@ -14,8 +14,13 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -31,38 +36,23 @@ public class CountUtils {
 
     Flowable<Integer> flowableCountDown;
     Subscriber<Integer> suscriberCountDown;
+    int test = 9;
 
     public CountUtils() {
-        flowableCountDown = Flowable.create(new FlowableOnSubscribe<Integer>() {
+        Flowable.create(new FlowableOnSubscribe<Integer>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<Integer> e) throws Exception {
-                suscriberCountDown.onNext(temp);
-                suscriberCountDown.onComplete();
+                e.onNext(test);
             }
-        }, BackpressureStrategy.ERROR);
+        }, BackpressureStrategy.ERROR).delay(5, TimeUnit.SECONDS).subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(@NonNull Integer integer) throws Exception {
+                        Log.d("tag", "sunyiyan");
+                    }
+                });
 
-        suscriberCountDown = new Subscriber<Integer>() {
-            @Override
-            public void onSubscribe(Subscription s) {
-                subs = s;
-            }
-
-            @Override
-            public void onNext(Integer integer) {
-                action(integer.intValue());
-            }
-
-            @Override
-            public void onError(Throwable t) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
-        action(5);
     }
 
 
@@ -72,12 +62,13 @@ public class CountUtils {
 
     public void action(int seconds) {
         flowableCountDown.delay(seconds, TimeUnit.SECONDS).
-                subscribeOn(AndroidSchedulers.mainThread()).
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
                 subscribe(suscriberCountDown);
         temp = 5;
         num = num + 1 > 4 ? 0 : num + 1;
         Log.d("tag", "" + num);
-        listener.countAction();
+//        listener.countAction();
     }
 
     public void cancelAction() {
