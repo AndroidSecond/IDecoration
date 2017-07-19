@@ -1,6 +1,5 @@
 package com.haipeng.decoration.utils;
 
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.haipeng.decoration.listener.OnCountListener;
@@ -14,13 +13,9 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -30,8 +25,9 @@ import io.reactivex.schedulers.Schedulers;
 public class CountUtils {
 
     Subscription subs;
-    int temp;
+    int blankTime = 10;
     public static int num;
+    boolean isPause = false;
     private OnCountListener listener;
 
     Flowable<Integer> flowableCountDown;
@@ -39,48 +35,47 @@ public class CountUtils {
     int test = 9;
 
     public CountUtils() {
+    }
+
+    public void realize(final int blankTime) {
+        num = num + 1 > 3 ? 0 : num + 1;
+        listener.countAction();
         Flowable.create(new FlowableOnSubscribe<Integer>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<Integer> e) throws Exception {
                 e.onNext(test);
             }
-        }, BackpressureStrategy.ERROR).delay(5, TimeUnit.SECONDS).subscribeOn(Schedulers.io()).
-                observeOn(AndroidSchedulers.mainThread()).
-                subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        Log.d("tag", "sunyiyan");
-                    }
-                });
+        }, BackpressureStrategy.ERROR).delay(blankTime, TimeUnit.SECONDS).subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(@NonNull Integer integer) throws Exception {
+                Log.d("tag", "sunyiyan");
+                if (isPause) {
+                    isPause = true;
+                } else {
+                    realize(blankTime);
+                }
+            }
+        });
 
     }
-
 
     public void setListener(OnCountListener listener) {
         this.listener = listener;
-    }
-
-    public void action(int seconds) {
-        flowableCountDown.delay(seconds, TimeUnit.SECONDS).
-                subscribeOn(Schedulers.io()).
-                observeOn(AndroidSchedulers.mainThread()).
-                subscribe(suscriberCountDown);
-        temp = 5;
-        num = num + 1 > 4 ? 0 : num + 1;
-        Log.d("tag", "" + num);
-//        listener.countAction();
+        realize(blankTime);
+        this.listener.countAction();
     }
 
     public void cancelAction() {
         if (null != subs)
-            subs.cancel();//取消订阅
+            isPause = true;
     }
 
     // 当用户手滑动时
     public void inRefresh() {
         cancelAction();
-        temp = 10;
-        action(temp);
+        blankTime = 20;
+        realize(blankTime);
     }
 
 

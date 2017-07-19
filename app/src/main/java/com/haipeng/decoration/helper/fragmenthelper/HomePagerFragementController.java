@@ -23,7 +23,7 @@ public class HomePagerFragementController implements OnCountListener {
         mFragment = pageFragment;
         mViewHelper = viewHelper;
         countUtils = new CountUtils();
-        countUtils.setListener(this);
+
         init();
     }
 
@@ -35,7 +35,7 @@ public class HomePagerFragementController implements OnCountListener {
         mFragment.navigationViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                CountUtils.num = position;
+//                CountUtils.num = position;
 //                countUtils.inRefresh();
 //                mFragment.mPagerAdapter.notifyDataSetChanged();
             }
@@ -50,10 +50,14 @@ public class HomePagerFragementController implements OnCountListener {
 
             }
         });
+
+        countUtils.setListener(this);
     }
 
     @Override
     public void countAction() {
-        mFragment.mPagerAdapter.notifyDataSetChanged();
+//        mFragment.mPagerAdapter.notifyDataSetChanged();
+        mFragment.navigationViewPager.setCurrentItem(CountUtils.num);
+        // Countils.num 为1的时候，adapter的postition为2，第二
     }
 }

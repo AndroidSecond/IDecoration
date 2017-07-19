@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class MyNavigationViewPager extends ViewPager implements OnCountListener {
+public class MyNavigationViewPager extends ViewPager {
 
 
     private ImageView view1, view2, view3, view4;
@@ -50,13 +50,7 @@ public class MyNavigationViewPager extends ViewPager implements OnCountListener 
 //
 //    }
 
-
-    @Override
-    public void countAction() {
-
-    }
-
-    public void init(){
+    public void init() {
 //        addOnPageChangeListener(this);
 //        addOnPageChangeListener(new OnPageChangeListener() {
 //            @Override
@@ -100,7 +94,7 @@ public class MyNavigationViewPager extends ViewPager implements OnCountListener 
         view3 = new ImageView(context);
         view4 = new ImageView(context);
 
-        view1.setImageResource(R.mipmap.ic_launcher);
+        view1.setImageResource(R.mipmap.bg_teacher_offline);
         view2.setImageResource(R.mipmap.bg_student_offline);
         view3.setImageResource(R.mipmap.bg_student_online);
         view4.setImageResource(R.mipmap.bg_teacher_online);

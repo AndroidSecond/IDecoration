@@ -34,18 +34,15 @@ public class MyNavigationViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        int preNum = CountUtils.num < 0 ? 3 : CountUtils.num;
-        container.removeView(mViewList.get(preNum));
+//        int preNum = CountUtils.num - 1 < 0 ? 3 : CountUtils.num - 1;
+        container.removeView(mViewList.get(position % mViewList.size()));
 
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-//        container.removeView();
-        container.removeView(mViewList.get(CountUtils.num));
-        container.addView(mViewList.get(CountUtils.num));
-
-        return mViewList.get(CountUtils.num);
+        container.addView(mViewList.get(position % mViewList.size()));
+        return mViewList.get(position % mViewList.size());
     }
 
 }
