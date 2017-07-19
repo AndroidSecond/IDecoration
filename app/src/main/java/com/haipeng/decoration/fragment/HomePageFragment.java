@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
+import com.haipeng.decoration.adapter.MyHorizontalRecyclerviewRecommendAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
 import com.haipeng.decoration.helper.fragmenthelper.HomePageFragmentViewHelper;
 import com.haipeng.decoration.helper.fragmenthelper.HomePagerFragementController;
@@ -29,7 +30,9 @@ public class HomePageFragment extends BaseMainFragment {
     public View mContentView;
     public MyNavigationViewPager navigationViewPager;
     public RecyclerView horizontalRecyclerView;
+
     public RecyclerView verticalRecyclerView;
+    public MyHorizontalRecyclerviewRecommendAdapter recyclerviewRecommendAdapter;
 
     public static HomePageFragment newInstance(String param1, String param2) {
         HomePageFragment fragment = new HomePageFragment();
