@@ -34,8 +34,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     ChildRecommendHoriAdapter childHoriAdapter;
     private List<ImageView> viewList;
     private List<String> horiList;
-    private List<String> mDatas;
     private CountUtils countUtils;
+    private List<String> mDatas;
 
     List<String> data = new ArrayList<String>();
 
@@ -45,12 +45,17 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         data.add("c");
     }
 
-    public HomePageAdapter(Context context, List<String> mDatas) {
+    public HomePageAdapter(Context context) {
         this.mDatas = mDatas;
         this.mContext = context;
         mInflater = LayoutInflater.from(mContext);
         setData();
         countUtils = new CountUtils();
+    }
+
+    public void setDataContent(List<String> datas) {
+        mDatas = datas;
+        notifyDataSetChanged();
     }
 
     public void setListImageViews(List<ImageView> list) {
@@ -105,13 +110,13 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         } else {
             RecommendNormalViewHolder normalViewHolder = (RecommendNormalViewHolder) holder;
             normalViewHolder.ivRecommend.setImageResource(R.mipmap.ic_launcher);
-            normalViewHolder.tvRecommend.setText("fds");
+            normalViewHolder.tvRecommend.setText(mDatas.get(position - 2));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mDatas.size() + 2;
+        return mDatas == null ? 0 : mDatas.size() + 2;
     }
 
     @Override
