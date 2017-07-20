@@ -16,11 +16,11 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class HomePagerFragementController implements OnCountListener {
+public class HomePagerFragementController {
 
     HomePageFragment mFragment;
     HomePageFragmentViewHelper mViewHelper;
-    private CountUtils countUtils;
+
 
     List<String> data = new ArrayList<String>();
 
@@ -33,7 +33,7 @@ public class HomePagerFragementController implements OnCountListener {
     public HomePagerFragementController(HomePageFragment pageFragment, HomePageFragmentViewHelper viewHelper) {
         mFragment = pageFragment;
         mViewHelper = viewHelper;
-        countUtils = new CountUtils();
+
         setData();
         init();
     }
@@ -51,10 +51,4 @@ public class HomePagerFragementController implements OnCountListener {
 //        countUtils.setListener(this);
     }
 
-    @Override
-    public void countAction() {
-//        mFragment.mPagerAdapter.notifyDataSetChanged();
-//        mFragment.navigationViewPager.setCurrentItem(CountUtils.num);
-        // Countils.num 为1的时候，adapter的postition为2，第二
-    }
 }

@@ -14,6 +14,7 @@ import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.viewholder.RecommendHoriViewHolder;
 import com.haipeng.decoration.adapter.viewholder.RecommendNormalViewHolder;
 import com.haipeng.decoration.adapter.viewholder.RecommendPagerViewHolder;
+import com.haipeng.decoration.utils.CountUtils;
 import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPager;
 import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPagerAdapter;
 
@@ -34,6 +35,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private List<ImageView> viewList;
     private List<String> horiList;
     private List<String> mDatas;
+    private CountUtils countUtils;
 
     List<String> data = new ArrayList<String>();
 
@@ -48,6 +50,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.mContext = context;
         mInflater = LayoutInflater.from(mContext);
         setData();
+        countUtils = new CountUtils();
     }
 
     public void setListImageViews(List<ImageView> list) {
@@ -69,6 +72,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             view = mInflater.inflate(R.layout.item_pager_recommend, parent, false);
             RecommendPagerViewHolder pagerViewHolder = new RecommendPagerViewHolder(view);
             pagerViewHolder.viewPager = (ChildRecommendNaviViewPager) view.findViewById(R.id.view_pager_navigation);
+            countUtils.setListener(pagerViewHolder.viewPager);
             return pagerViewHolder;
         } else if (viewType == TYPE_HORI) {
             view = mInflater.inflate(R.layout.item_recycle_hori_recommend, parent, false);
@@ -76,7 +80,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             horiViewHolder.horiRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_horizontal);
             return horiViewHolder;
         } else {
-            view = mInflater.inflate(R.layout.item_recycle_vertical_recommend,parent,false);
+            view = mInflater.inflate(R.layout.item_recycle_vertical_recommend, parent, false);
             RecommendNormalViewHolder normalViewHolder = new RecommendNormalViewHolder(view);
             normalViewHolder.ivRecommend = (ImageView) view.findViewById(R.id.iv_recommend_avator);
             normalViewHolder.tvRecommend = (TextView) view.findViewById(R.id.tv_recommend);
@@ -96,7 +100,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             LinearLayoutManager hLM = new LinearLayoutManager(mContext);
             hLM.setOrientation(LinearLayoutManager.HORIZONTAL);
             horiViewHolder.horiRecyclerView.setLayoutManager(hLM);
-            childHoriAdapter = new ChildRecommendHoriAdapter(mContext,data);
+            childHoriAdapter = new ChildRecommendHoriAdapter(mContext, data);
             horiViewHolder.horiRecyclerView.setAdapter(childHoriAdapter);
         } else {
             RecommendNormalViewHolder normalViewHolder = (RecommendNormalViewHolder) holder;
@@ -107,7 +111,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return mDatas.size()+2;
+        return mDatas.size() + 2;
     }
 
     @Override

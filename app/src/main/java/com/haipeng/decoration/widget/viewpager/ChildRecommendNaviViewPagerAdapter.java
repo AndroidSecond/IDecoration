@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.haipeng.decoration.listener.OnCountListener;
 import com.haipeng.decoration.utils.CountUtils;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter {
+public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter{
 
 
     List<ImageView> mViewList;
@@ -44,5 +45,4 @@ public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter {
         container.addView(mViewList.get(position % mViewList.size()));
         return mViewList.get(position % mViewList.size());
     }
-
 }

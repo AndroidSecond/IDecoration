@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.listener.OnCountListener;
+import com.haipeng.decoration.utils.CountUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class ChildRecommendNaviViewPager extends ViewPager {
+public class ChildRecommendNaviViewPager extends ViewPager implements OnCountListener{
 
 
     private ImageView view1, view2, view3, view4;
@@ -112,4 +113,8 @@ public class ChildRecommendNaviViewPager extends ViewPager {
         return viewList;
     }
 
+    @Override
+    public void countAction() {
+        setCurrentItem(CountUtils.num);
+    }
 }
