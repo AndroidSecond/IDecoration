@@ -19,18 +19,18 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class MyNavigationViewPager extends ViewPager {
+public class ChildRecommendNaviViewPager extends ViewPager {
 
 
     private ImageView view1, view2, view3, view4;
     private List<ImageView> viewList;
 
-    public MyNavigationViewPager(Context context) {
+    public ChildRecommendNaviViewPager(Context context) {
         super(context);
 
     }
 
-    public MyNavigationViewPager(Context context, AttributeSet attrs) {
+    public ChildRecommendNaviViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
 
     }

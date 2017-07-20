@@ -13,12 +13,12 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class MyNavigationViewPagerAdapter extends PagerAdapter {
+public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter {
 
 
     List<ImageView> mViewList;
 
-    public MyNavigationViewPagerAdapter(List<ImageView> viewList) {
+    public ChildRecommendNaviViewPagerAdapter(List<ImageView> viewList) {
         mViewList = viewList;
     }
 

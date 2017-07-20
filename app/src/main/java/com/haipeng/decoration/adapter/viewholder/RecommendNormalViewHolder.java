@@ -9,9 +9,9 @@ import android.widget.TextView;
  * Created by Administrator on 2017/7/19.
  */
 
-public class MyHorizontalRecommendViewHolder extends RecyclerView.ViewHolder{
+public class RecommendNormalViewHolder extends RecyclerView.ViewHolder{
 
-    public MyHorizontalRecommendViewHolder(View itemView) {
+    public RecommendNormalViewHolder(View itemView) {
         super(itemView);
     }
 

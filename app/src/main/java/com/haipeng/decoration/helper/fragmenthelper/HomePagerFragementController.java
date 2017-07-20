@@ -1,15 +1,13 @@
 package com.haipeng.decoration.helper.fragmenthelper;
 
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.MotionEvent;
-import android.view.View;
 
-import com.haipeng.decoration.adapter.MyHorizontalRecyclerviewRecommendAdapter;
+import com.haipeng.decoration.adapter.ChildRecommendHoriAdapter;
+import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.fragment.HomePageFragment;
 import com.haipeng.decoration.listener.OnCountListener;
 import com.haipeng.decoration.utils.CountUtils;
-import com.haipeng.decoration.widget.viewpager.MyNavigationViewPagerAdapter;
+import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,42 +40,21 @@ public class HomePagerFragementController implements OnCountListener {
 
     public void init() {
         mViewHelper.initView();
-        mFragment.mPagerAdapter = new MyNavigationViewPagerAdapter(mFragment.navigationViewPager.getViews(mFragment.getActivity()));
-        mFragment.navigationViewPager.setAdapter(mFragment.mPagerAdapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mFragment.getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mFragment.horizontalRecyclerView.setLayoutManager(linearLayoutManager);
+        //纵向recyclerView初始化
+        LinearLayoutManager VLM = new LinearLayoutManager(mFragment.getActivity());
+        VLM.setOrientation(LinearLayoutManager.VERTICAL);
+        mFragment.verticalRecyclerView.setLayoutManager(VLM);
+        mFragment.verticalAdapter = new HomePageAdapter(mFragment.getActivity(),data);
+        mFragment.verticalRecyclerView.setAdapter(mFragment.verticalAdapter);
 
-        mFragment.recyclerviewRecommendAdapter = new MyHorizontalRecyclerviewRecommendAdapter(mFragment.getActivity(),data);
-        mFragment.horizontalRecyclerView.setAdapter(mFragment.recyclerviewRecommendAdapter);
-
-        mFragment.navigationViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                CountUtils.num = position;
-//                countUtils.inRefresh();
-//                mFragment.mPagerAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        countUtils.setListener(this);
+//        countUtils.setListener(this);
     }
 
     @Override
     public void countAction() {
 //        mFragment.mPagerAdapter.notifyDataSetChanged();
-        mFragment.navigationViewPager.setCurrentItem(CountUtils.num);
+//        mFragment.navigationViewPager.setCurrentItem(CountUtils.num);
         // Countils.num 为1的时候，adapter的postition为2，第二
     }
 }

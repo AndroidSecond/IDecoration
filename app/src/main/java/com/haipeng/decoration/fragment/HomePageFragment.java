@@ -9,12 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
-import com.haipeng.decoration.adapter.MyHorizontalRecyclerviewRecommendAdapter;
+import com.haipeng.decoration.adapter.ChildRecommendHoriAdapter;
+import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
 import com.haipeng.decoration.helper.fragmenthelper.HomePageFragmentViewHelper;
 import com.haipeng.decoration.helper.fragmenthelper.HomePagerFragementController;
-import com.haipeng.decoration.widget.viewpager.MyNavigationViewPager;
-import com.haipeng.decoration.widget.viewpager.MyNavigationViewPagerAdapter;
+import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPager;
+import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPagerAdapter;
 
 public class HomePageFragment extends BaseMainFragment {
     private static final String ARG_PARAM1 = "param1";
@@ -26,13 +27,10 @@ public class HomePageFragment extends BaseMainFragment {
     private OnFragmentInteractionListener mListener;
     private HomePageFragmentViewHelper viewHelper;
     private HomePagerFragementController mController;
-    public MyNavigationViewPagerAdapter mPagerAdapter;
     public View mContentView;
-    public MyNavigationViewPager navigationViewPager;
-    public RecyclerView horizontalRecyclerView;
 
     public RecyclerView verticalRecyclerView;
-    public MyHorizontalRecyclerviewRecommendAdapter recyclerviewRecommendAdapter;
+    public HomePageAdapter verticalAdapter;
 
     public static HomePageFragment newInstance(String param1, String param2) {
         HomePageFragment fragment = new HomePageFragment();
