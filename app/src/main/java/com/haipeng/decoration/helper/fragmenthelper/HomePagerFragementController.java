@@ -9,6 +9,7 @@ import com.haipeng.decoration.adapter.ChildRecommendHoriAdapter;
 import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.fragment.HomePageFragment;
 import com.haipeng.decoration.listener.OnCountListener;
+import com.haipeng.decoration.listener.UploadMoreOnScrollListener;
 import com.haipeng.decoration.utils.CountUtils;
 import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPagerAdapter;
 
@@ -58,6 +59,12 @@ public class HomePagerFragementController implements SwipeRefreshLayout.OnRefres
         mFragment.verticalAdapter.setDataContent(data);
         mFragment.verticalRecyclerView.setAdapter(mFragment.verticalAdapter);
         mFragment.swipeRefreshLayout.setOnRefreshListener(this);
+        mFragment.verticalRecyclerView.addOnScrollListener(new UploadMoreOnScrollListener(VLM) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                onLoadMoreRecyclerView();
+            }
+        });
 //        countUtils.setListener(this);
     }
 
@@ -74,6 +81,21 @@ public class HomePagerFragementController implements SwipeRefreshLayout.OnRefres
                 data.add("李");
                 mFragment.verticalAdapter.setDataContent(data);
                 Toast.makeText(mFragment.getActivity(), "Toast", Toast.LENGTH_LONG).show();
+                return 2;
+            }
+        }).subscribe();
+    }
+
+    public void onLoadMoreRecyclerView() {
+        Flowable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).map(new Function<Long, Object>() {
+            @Override
+            public Object apply(@NonNull Long aLong) throws Exception {
+                data.add("赵");
+                data.add("钱");
+                data.add("孙");
+                data.add("李");
+                mFragment.verticalAdapter.setDataContent(data);
+                Toast.makeText(mFragment.getActivity(), "Toast2", Toast.LENGTH_LONG).show();
                 return 2;
             }
         }).subscribe();
