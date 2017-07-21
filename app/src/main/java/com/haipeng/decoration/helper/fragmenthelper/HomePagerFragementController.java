@@ -59,6 +59,7 @@ public class HomePagerFragementController implements SwipeRefreshLayout.OnRefres
         mFragment.verticalAdapter.setDataContent(data);
         mFragment.verticalRecyclerView.setAdapter(mFragment.verticalAdapter);
         mFragment.swipeRefreshLayout.setOnRefreshListener(this);
+        mFragment.verticalRecyclerView.setHasFixedSize(true);
         mFragment.verticalRecyclerView.addOnScrollListener(new UploadMoreOnScrollListener(VLM) {
             @Override
             public void onLoadMore(int currentPage) {
@@ -70,6 +71,8 @@ public class HomePagerFragementController implements SwipeRefreshLayout.OnRefres
 
     @Override
     public void onRefresh() {
+
+        // adapter里面的
         Flowable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).map(new Function<Long, Object>() {
             @Override
             public Object apply(@NonNull Long aLong) throws Exception {
