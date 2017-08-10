@@ -12,12 +12,7 @@ import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainFragment;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link TemplatesFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link TemplatesFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * //装修模板，风格，设计师
  */
 public class TemplatesFragment extends BaseMainFragment {
     // TODO: Rename parameter arguments, choose names that match

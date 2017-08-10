@@ -10,13 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
-import com.haipeng.decoration.adapter.ChildRecommendHoriAdapter;
 import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
 import com.haipeng.decoration.helper.fragmenthelper.HomePageFragmentViewHelper;
 import com.haipeng.decoration.helper.fragmenthelper.HomePagerFragementController;
-import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPager;
-import com.haipeng.decoration.widget.viewpager.ChildRecommendNaviViewPagerAdapter;
+
+/**
+ * 第一页
+ * 主页推荐 | 供应商，团队，装修案例推荐
+ * 这里加一行，去逛商场，，
+ * 横向滚动页，装修案例
+ * 最下面论坛交流
+ * */
 
 public class HomePageFragment extends BaseMainFragment {
     private static final String ARG_PARAM1 = "param1";
