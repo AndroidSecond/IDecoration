@@ -4,12 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
+import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
+import com.haipeng.decoration.helper.fragmenthelper.MineFragmentViewHelper;
+import com.haipeng.decoration.helper.fragmenthelper.MineFragmentController;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +35,13 @@ public class MineFragment extends BaseMainFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private MineFragmentViewHelper viewHelper;
+    private MineFragmentController mController;
+    public View mContentView;
+
+    public RecyclerView verticalRecyclerView;
+    public HomePageAdapter verticalAdapter;
+    public SwipeRefreshLayout swipeRefreshLayout;
 
     public MineFragment() {
         // Required empty public constructor
@@ -66,7 +78,10 @@ public class MineFragment extends BaseMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mine, container, false);
+        mContentView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        viewHelper = new MineFragmentViewHelper(this);
+        mController = new MineFragmentController(this, viewHelper);
+        return mContentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

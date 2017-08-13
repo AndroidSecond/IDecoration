@@ -34,3 +34,10 @@ bug收集，
 发布渠道
 
 热修复
+
+技术思考
+=================
+有的时候不走onDestory的生命周期，crash的时候，
+把activiity,fragment,和register的对象，通过对象池保存起来适当的action的时候，
+检查一遍，并删除释放掉
+

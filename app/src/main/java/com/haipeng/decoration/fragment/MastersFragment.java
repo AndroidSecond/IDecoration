@@ -4,12 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
+import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
+import com.haipeng.decoration.helper.fragmenthelper.MastersFragmentController;
+import com.haipeng.decoration.helper.fragmenthelper.MastersFragmentViewHelper;
 
 /**
  * 装修公司，和装修团队用这个同一个
@@ -25,6 +30,13 @@ public class MastersFragment extends BaseMainFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private MastersFragmentViewHelper viewHelper;
+    private MastersFragmentController mController;
+    public View mContentView;
+
+    public RecyclerView verticalRecyclerView;
+    public HomePageAdapter verticalAdapter;
+    public SwipeRefreshLayout swipeRefreshLayout;
 
     public MastersFragment() {
         // Required empty public constructor
@@ -61,7 +73,10 @@ public class MastersFragment extends BaseMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_masters, container, false);
+        mContentView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        viewHelper = new MastersFragmentViewHelper(this);
+        mController = new MastersFragmentController(this, viewHelper);
+        return mContentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -3,13 +3,17 @@ package com.haipeng.decoration.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
+import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
+import com.haipeng.decoration.helper.fragmenthelper.TemplatesFragmentsController;
+import com.haipeng.decoration.helper.fragmenthelper.TemplatesFragmentsViewHelper;
 
 /**
  * //装修模板，风格，设计师
@@ -25,6 +29,13 @@ public class TemplatesFragment extends BaseMainFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private TemplatesFragmentsViewHelper viewHelper;
+    private TemplatesFragmentsController mController;
+    public View mContentView;
+
+    public RecyclerView verticalRecyclerView;
+    public HomePageAdapter verticalAdapter;
+    public SwipeRefreshLayout swipeRefreshLayout;
 
     public TemplatesFragment() {
         // Required empty public constructor
@@ -61,7 +72,10 @@ public class TemplatesFragment extends BaseMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_templates, container, false);
+        mContentView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        viewHelper = new TemplatesFragmentsViewHelper(this);
+        mController = new TemplatesFragmentsController(this, viewHelper);
+        return mContentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

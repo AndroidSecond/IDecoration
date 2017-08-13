@@ -4,12 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
+import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
+import com.haipeng.decoration.helper.fragmenthelper.MainFragmentViewHelper;
+import com.haipeng.decoration.helper.fragmenthelper.MainFragmentController;
 
 /**
  * 主页我要装修的页面
@@ -25,6 +30,10 @@ public class MainFragment extends BaseMainFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private MainFragmentViewHelper viewHelper;
+    private MainFragmentController mController;
+    public View mContentView;
 
     public MainFragment() {
         // Required empty public constructor
@@ -61,7 +70,10 @@ public class MainFragment extends BaseMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        mContentView = inflater.inflate(R.layout.fragment_main, container, false);
+        viewHelper = new MainFragmentViewHelper(this);
+        mController = new MainFragmentController(this, viewHelper);
+        return mContentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

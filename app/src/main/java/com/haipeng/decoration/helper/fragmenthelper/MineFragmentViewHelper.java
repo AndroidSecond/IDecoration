@@ -6,18 +6,18 @@ import android.view.View;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.fragment.HomePageFragment;
-import com.haipeng.decoration.fragment.MainFragment;
+import com.haipeng.decoration.fragment.MineFragment;
 
 /**
- * Created by Administrator on 2017/7/4.
+ * Created by Administrator on 2017/8/12.
  */
 
-public class MainFragmentViewHelper {
-    MainFragment mFragment;
+public class MineFragmentViewHelper {
+    MineFragment mFragment;
     View mView;
 
-    public MainFragmentViewHelper(MainFragment mainFragment) {
-        mFragment = mainFragment;
+    public MineFragmentViewHelper(MineFragment mineFragment) {
+        mFragment = mineFragment;
         mView = mFragment.mContentView;
     }
 
