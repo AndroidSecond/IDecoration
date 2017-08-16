@@ -4,7 +4,7 @@ package com.haipeng.decoration.model;
  * Created by Administrator on 2017/8/13.
  */
 
-public class TemplateModel {
+public class TemplateModel extends BaseModel {
 
     private long uniqueNumber;
 

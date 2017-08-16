@@ -4,7 +4,9 @@ package com.haipeng.decoration.model;
  * Created by Administrator on 2017/7/30.
  */
 
-public class UserModel {
+public class UserModel extends BaseModel {
+
+    public long uniqueNumber;
     public String name;
     public String phone;
     public String email;
@@ -67,5 +69,13 @@ public class UserModel {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public long getUniqueNumber() {
+        return uniqueNumber;
+    }
+
+    public void setUniqueNumber(long uniqueNumber) {
+        this.uniqueNumber = uniqueNumber;
     }
 }

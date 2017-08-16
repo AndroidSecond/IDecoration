@@ -4,8 +4,9 @@ package com.haipeng.decoration.model;
  * Created by Administrator on 2017/7/30.
  */
 
-public class MasterModel {
-    private Long  uniqueNumber; // 唯一编号
+public class MasterModel extends BaseModel{
+
+    private long  uniqueNumber; // 唯一编号
 
     private String name;
 

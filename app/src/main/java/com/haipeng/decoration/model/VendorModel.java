@@ -4,9 +4,9 @@ package com.haipeng.decoration.model;
  * Created by Administrator on 2017/8/13.
  */
 
-public class VendorModel {
+public class VendorModel extends BaseModel {
 
-    private Long  uniqueNumber; // 唯一编号
+    private long  uniqueNumber; // 唯一编号
 
     private String name;
 

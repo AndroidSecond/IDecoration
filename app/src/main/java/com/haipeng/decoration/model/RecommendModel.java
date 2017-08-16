@@ -1,7 +1,7 @@
 package com.haipeng.decoration.model;
 
 
-public class RecommendModel {
+public class RecommendModel extends BaseModel {
 
 
     private String title;
