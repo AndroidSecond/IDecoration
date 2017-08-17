@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.HomePageAdapter;
@@ -39,9 +41,10 @@ public class MineFragment extends BaseMainFragment {
     private MineFragmentController mController;
     public View mContentView;
 
-    public RecyclerView verticalRecyclerView;
-    public HomePageAdapter verticalAdapter;
-    public SwipeRefreshLayout swipeRefreshLayout;
+    public LinearLayout llInitSign;
+    public LinearLayout llSignOk;
+    public Button btnSignIn;
+    public Button btnSignUp;
 
     public MineFragment() {
         // Required empty public constructor
@@ -78,7 +81,7 @@ public class MineFragment extends BaseMainFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mContentView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        mContentView = inflater.inflate(R.layout.fragment_mine, container, false);
         viewHelper = new MineFragmentViewHelper(this);
         mController = new MineFragmentController(this, viewHelper);
         return mContentView;

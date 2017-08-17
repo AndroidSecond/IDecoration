@@ -1,6 +1,7 @@
 package com.haipeng.decoration.application;
 
 import android.app.Application;
+import android.content.Context;
 
 /**
  * Created by Administrator on 2017/8/16.
@@ -8,17 +9,20 @@ import android.app.Application;
 
 public class MyApplication extends Application {
 
+/*   因为在其他模块第一次使用的时候执行 instance = new MyApplication ();
+    因为Application在清单文件中注册之后系统默认是单例模式的，
+    而使用 new MyApplication (); 并不会执行onCreate方法，
+    所以Application本身是和原先的系统生成的Application不是同一个pid，所以会报空*/
+
     public static MyApplication myApplication;
 
-    public static MyApplication getInstance(){
-        if(null == myApplication){
-            myApplication = new MyApplication();
-        }
+    public static MyApplication getInstance() {
         return myApplication;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        myApplication = this;
     }
 }

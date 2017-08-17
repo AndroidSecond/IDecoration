@@ -1,5 +1,11 @@
 package com.haipeng.decoration.helper.fragmenthelper;
 
+import android.content.Intent;
+import android.view.View;
+
+import com.haipeng.decoration.R;
+import com.haipeng.decoration.activity.LoginActivity;
+import com.haipeng.decoration.activity.SignInActivity;
 import com.haipeng.decoration.fragment.MainFragment;
 import com.haipeng.decoration.fragment.MineFragment;
 import com.haipeng.decoration.ror.UrlUtils;
@@ -8,7 +14,7 @@ import com.haipeng.decoration.ror.UrlUtils;
  * Created by Administrator on 2017/8/12.
  */
 
-public class MineFragmentController {
+public class MineFragmentController implements View.OnClickListener{
     MineFragment mFragment = null;
     MineFragmentViewHelper viewHelper = null;
 
@@ -19,7 +25,22 @@ public class MineFragmentController {
     }
 
     public void init(){
+        mFragment.btnSignIn.setOnClickListener(this);
+        mFragment.btnSignUp.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_sign_up:
+                Intent intent = new Intent(mFragment.getActivity(), SignInActivity.class);
+                mFragment.getActivity().startActivity(intent);
+                break;
+            case R.id.btn_sign_in:
+                Intent intent2 = new Intent(mFragment.getActivity(), LoginActivity.class);
+                mFragment.getActivity().startActivity(intent2);
+                break;
+        }
     }
 
 }

@@ -53,7 +53,7 @@ public class UrlUtils extends RetrofitUtils {
 
 //    = FFunction<? super Throwable, ? extends BaseModel> valueSupplier
 
-    public static void signUp(String json, Consumer<ResponseUserModel> consumer) {
+    public static void signUp(String json, Consumer<String> consumer) {
         setSubscribe(urlService.signUp(json), consumer);
     }
 

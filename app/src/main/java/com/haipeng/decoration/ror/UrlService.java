@@ -24,7 +24,7 @@ public interface UrlService {
 
     @FormUrlEncoded
     @POST("148124/user/addUser")
-    Flowable<ResponseUserModel> signUp(@Field("UserModel") String json);
+    Flowable<String> signUp(@Field("UserModel") String json);
 
     @FormUrlEncoded
     @GET("148124/user/queryUser")

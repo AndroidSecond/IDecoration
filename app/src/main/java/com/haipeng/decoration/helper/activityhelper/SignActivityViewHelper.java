@@ -26,6 +26,7 @@ public class SignActivityViewHelper{
 
     public SignActivityViewHelper(SignInActivity loginActivity) {
         mActivity = loginActivity;
+        initView();
     }
 
     public void initView(){

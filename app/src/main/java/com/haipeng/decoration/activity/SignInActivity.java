@@ -30,7 +30,7 @@ public class SignInActivity extends BaseMainActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_in);
 
         mViewHelper = new SignActivityViewHelper(this);
         mController = new SignInActivityController(this, mViewHelper);

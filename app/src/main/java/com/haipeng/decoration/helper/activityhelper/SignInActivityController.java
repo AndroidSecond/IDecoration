@@ -51,10 +51,10 @@ public class SignInActivityController implements View.OnClickListener{
     }
 
 
-    Consumer<ResponseUserModel> consumer = new Consumer<ResponseUserModel>() {
+    Consumer<String> consumer = new Consumer<String>() {
 
         @Override
-        public void accept(ResponseUserModel responseUserModel) throws Exception {
+        public void accept(String str) throws Exception {
 
         }
     };
