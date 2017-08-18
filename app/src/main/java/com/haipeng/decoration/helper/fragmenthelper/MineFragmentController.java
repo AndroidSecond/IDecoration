@@ -5,10 +5,8 @@ import android.view.View;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.activity.LoginActivity;
-import com.haipeng.decoration.activity.SignInActivity;
-import com.haipeng.decoration.fragment.MainFragment;
+import com.haipeng.decoration.activity.SignUpActivity;
 import com.haipeng.decoration.fragment.MineFragment;
-import com.haipeng.decoration.ror.UrlUtils;
 
 /**
  * Created by Administrator on 2017/8/12.
@@ -33,7 +31,7 @@ public class MineFragmentController implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_sign_up:
-                Intent intent = new Intent(mFragment.getActivity(), SignInActivity.class);
+                Intent intent = new Intent(mFragment.getActivity(), SignUpActivity.class);
                 mFragment.getActivity().startActivity(intent);
                 break;
             case R.id.btn_sign_in:

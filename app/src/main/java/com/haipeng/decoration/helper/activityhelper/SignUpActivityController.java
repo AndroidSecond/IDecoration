@@ -5,11 +5,12 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.haipeng.decoration.R;
-import com.haipeng.decoration.activity.LoginActivity;
-import com.haipeng.decoration.activity.SignInActivity;
-import com.haipeng.decoration.model.ResponseUserModel;
+import com.haipeng.decoration.activity.SignUpActivity;
+import com.haipeng.decoration.model.ReturnResult;
 import com.haipeng.decoration.model.UserModel;
 import com.haipeng.decoration.ror.UrlUtils;
+import com.haipeng.decoration.utils.UniqueNumberUtils;
+import com.haipeng.decoration.utils.widget.MyToastUtils;
 
 import io.reactivex.functions.Consumer;
 
@@ -17,12 +18,12 @@ import io.reactivex.functions.Consumer;
  * Created by Administrator on 2017/7/10.
  */
 
-public class SignInActivityController implements View.OnClickListener{
+public class SignUpActivityController implements View.OnClickListener{
 
-    SignInActivity mActivity;
-    SignActivityViewHelper mViewHelper;
+    SignUpActivity mActivity;
+    SignUpActivityViewHelper mViewHelper;
 
-    public SignInActivityController(SignInActivity mainActivity, SignActivityViewHelper viewHelper) {
+    public SignUpActivityController(SignUpActivity mainActivity, SignUpActivityViewHelper viewHelper) {
         mActivity = mainActivity;
         mViewHelper = viewHelper;
 
@@ -51,16 +52,18 @@ public class SignInActivityController implements View.OnClickListener{
     }
 
 
-    Consumer<String> consumer = new Consumer<String>() {
+    Consumer<ReturnResult> consumer = new Consumer<ReturnResult>() {
 
         @Override
-        public void accept(String str) throws Exception {
-
+        public void accept(ReturnResult rr) throws Exception {
+            MyToastUtils.showToastLong(mActivity,rr.getMsg());
+            mActivity.finish();
         }
     };
 
     public String getUserModelJson(String imgPath){
         UserModel userModel = new UserModel();
+        userModel.setUniqueNumber(UniqueNumberUtils.getUniqueNumber());
         userModel.setName(filterStringExe(mActivity.etName.getText()));
         userModel.setPhone(filterStringExe(mActivity.etPhone.getText()));
         userModel.setEmail(filterStringExe(mActivity.etEmail.getText()));

@@ -1,6 +1,8 @@
 package com.haipeng.decoration.activity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainActivity;
@@ -18,14 +20,23 @@ public class LoginActivity extends BaseMainActivity{
 
     LoginActivityViewHelper mViewHelper;
     LoginActivityController mController;
+    public EditText etAccount;
+    public EditText etPassword;
+    public Button  btnCommit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         mViewHelper = new LoginActivityViewHelper(this);
         mController = new LoginActivityController(this, mViewHelper);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mViewHelper.initView();
+        mController.init();
+    }
 }

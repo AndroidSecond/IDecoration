@@ -5,6 +5,7 @@ import com.haipeng.decoration.model.MasterModel;
 import com.haipeng.decoration.model.OrderModel;
 import com.haipeng.decoration.model.RecommendModel;
 import com.haipeng.decoration.model.ResponseUserModel;
+import com.haipeng.decoration.model.ReturnResult;
 import com.haipeng.decoration.model.TemplateModel;
 import com.haipeng.decoration.model.VendorModel;
 
@@ -24,7 +25,7 @@ public interface UrlService {
 
     @FormUrlEncoded
     @POST("148124/user/addUser")
-    Flowable<String> signUp(@Field("UserModel") String json);
+    Flowable<ReturnResult> signUp(@Field("UserModel") String json);
 
     @FormUrlEncoded
     @GET("148124/user/queryUser")

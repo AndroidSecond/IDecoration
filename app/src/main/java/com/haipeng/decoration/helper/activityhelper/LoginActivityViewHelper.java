@@ -1,5 +1,7 @@
 package com.haipeng.decoration.helper.activityhelper;
 
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.haipeng.decoration.R;
@@ -20,7 +22,9 @@ public class LoginActivityViewHelper {
     }
 
     public void initView(){
-
+        mActivity.etAccount = (EditText) mActivity.findViewById(R.id.et_account);
+        mActivity.etPassword = (EditText) mActivity.findViewById(R.id.et_password);
+        mActivity.btnCommit = (Button) mActivity.findViewById(R.id.btn_commit);
     }
 
 

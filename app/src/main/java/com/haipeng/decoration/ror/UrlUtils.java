@@ -5,6 +5,7 @@ import com.haipeng.decoration.model.MasterModel;
 import com.haipeng.decoration.model.OrderModel;
 import com.haipeng.decoration.model.RecommendModel;
 import com.haipeng.decoration.model.ResponseUserModel;
+import com.haipeng.decoration.model.ReturnResult;
 import com.haipeng.decoration.model.TemplateModel;
 import com.haipeng.decoration.model.UserModel;
 import com.haipeng.decoration.model.VendorModel;
@@ -53,7 +54,7 @@ public class UrlUtils extends RetrofitUtils {
 
 //    = FFunction<? super Throwable, ? extends BaseModel> valueSupplier
 
-    public static void signUp(String json, Consumer<String> consumer) {
+    public static void signUp(String json, Consumer<ReturnResult> consumer) {
         setSubscribe(urlService.signUp(json), consumer);
     }
 

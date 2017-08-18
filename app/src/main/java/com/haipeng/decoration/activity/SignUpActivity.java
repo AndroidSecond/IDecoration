@@ -7,16 +7,14 @@ import android.widget.ImageView;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainActivity;
-import com.haipeng.decoration.helper.activityhelper.LoginActivityController;
-import com.haipeng.decoration.helper.activityhelper.LoginActivityViewHelper;
-import com.haipeng.decoration.helper.activityhelper.SignActivityViewHelper;
-import com.haipeng.decoration.helper.activityhelper.SignInActivityController;
+import com.haipeng.decoration.helper.activityhelper.SignUpActivityViewHelper;
+import com.haipeng.decoration.helper.activityhelper.SignUpActivityController;
 
 /**
  * Created by Administrator on 2017/8/17.
  */
 
-public class SignInActivity extends BaseMainActivity{
+public class SignUpActivity extends BaseMainActivity{
 
 
     public Button back;
@@ -24,16 +22,16 @@ public class SignInActivity extends BaseMainActivity{
     public ImageView img;
     public EditText etName, etPhone, etEmail, etPassword, etRePassword;
 
-    SignActivityViewHelper mViewHelper;
-    SignInActivityController mController;
+    SignUpActivityViewHelper mViewHelper;
+    SignUpActivityController mController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        mViewHelper = new SignActivityViewHelper(this);
-        mController = new SignInActivityController(this, mViewHelper);
+        mViewHelper = new SignUpActivityViewHelper(this);
+        mController = new SignUpActivityController(this, mViewHelper);
     }
 
 }
