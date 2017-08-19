@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.HomePageAdapter;
@@ -41,10 +42,11 @@ public class MineFragment extends BaseMainFragment {
     private MineFragmentController mController;
     public View mContentView;
 
-    public LinearLayout llInitSign;
+    public LinearLayout llSignUp;
     public LinearLayout llSignOk;
     public Button btnSignIn;
     public Button btnSignUp;
+    public TextView tvName;
 
     public MineFragment() {
         // Required empty public constructor

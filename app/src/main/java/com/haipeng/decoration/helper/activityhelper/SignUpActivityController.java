@@ -18,7 +18,7 @@ import io.reactivex.functions.Consumer;
  * Created by Administrator on 2017/7/10.
  */
 
-public class SignUpActivityController implements View.OnClickListener{
+public class SignUpActivityController implements View.OnClickListener {
 
     SignUpActivity mActivity;
     SignUpActivityViewHelper mViewHelper;
@@ -44,7 +44,7 @@ public class SignUpActivityController implements View.OnClickListener{
             case R.id.back:
                 break;
             case R.id.commit:
-                UrlUtils.signUp(getUserModelJson(""),consumer);
+                UrlUtils.signUp(getUserModelJson(""), consumer, errorConsumer);
                 break;
             case R.id.iv_add_user:
                 break;
@@ -56,12 +56,19 @@ public class SignUpActivityController implements View.OnClickListener{
 
         @Override
         public void accept(ReturnResult rr) throws Exception {
-            MyToastUtils.showToastLong(mActivity,rr.getMsg());
+            MyToastUtils.showToastLong(mActivity, rr.getMsg());
             mActivity.finish();
         }
     };
 
-    public String getUserModelJson(String imgPath){
+    Consumer<Throwable> errorConsumer = new Consumer<Throwable>() {
+        @Override
+        public void accept(Throwable throwable) throws Exception {
+            MyToastUtils.showToastLong(mActivity, "注册失败");
+        }
+    };
+
+    public String getUserModelJson(String imgPath) {
         UserModel userModel = new UserModel();
         userModel.setUniqueNumber(UniqueNumberUtils.getUniqueNumber());
         userModel.setName(filterStringExe(mActivity.etName.getText()));
@@ -75,12 +82,11 @@ public class SignUpActivityController implements View.OnClickListener{
         return gson.toJson(userModel);
     }
 
-    public String filterStringExe(Editable eta){
+    public String filterStringExe(Editable eta) {
         String temp = "";
-        if(null == eta)
+        if (null == eta)
             return "";
-        else
-        {
+        else {
             temp = eta.toString().trim();
             return temp;
         }

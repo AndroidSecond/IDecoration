@@ -28,8 +28,12 @@ public interface UrlService {
     Flowable<ReturnResult> signUp(@Field("UserModel") String json);
 
     @FormUrlEncoded
-    @GET("148124/user/queryUser")
-    Flowable<ResponseUserModel> signIn(@Field("UserName") String userName,@Field("UserPassword") String UserPassword);
+    @POST("148124/user/queryUser")
+    Flowable<ResponseUserModel> signIn(@Field("UserName") String userName,@Field("UserPassword") String userPassword);
+
+    @FormUrlEncoded
+    @POST("148124/user/queryUserByUniqueNumber")
+    Flowable<ResponseUserModel> signIn(@Field("UserUniqueNumber") long uniqueNumber);
 
     @FormUrlEncoded
     @POST("order/addOrder")

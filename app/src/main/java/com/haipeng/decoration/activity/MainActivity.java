@@ -14,7 +14,10 @@ import com.haipeng.decoration.fragment.MineFragment;
 import com.haipeng.decoration.fragment.TemplatesFragment;
 import com.haipeng.decoration.helper.activityhelper.MainActivityController;
 import com.haipeng.decoration.helper.activityhelper.MainActivityViewHelper;
+import com.haipeng.decoration.utils.MySharedprefrencesConstantUtils;
 import com.haipeng.decoration.widget.panel.MainButtonPanel;
+
+import de.greenrobot.event.EventBus;
 
 
 /**
@@ -46,8 +49,15 @@ public class MainActivity extends BaseMainActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MySharedprefrencesConstantUtils.createConstantSharedPreferences(this);
         mViewHelper = new MainActivityViewHelper(this);
         mController = new MainActivityController(this, mViewHelper);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
