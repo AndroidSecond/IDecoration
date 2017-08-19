@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/add_title_horizontal"
+        android:text="姓名" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        style="@style/add_title_horizontal"
+        android:text="电话" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        style="@style/add_title_horizontal"
+        android:text="邮箱" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        style="@style/add_title_horizontal"
+        android:text="地址" />
+
+    <TextView
+        android:id="@+id/tv_area"
+        style="@style/add_title_horizontal"
+        android:text="面积" />
+
+    <TextView
+        android:id="@+id/tv_require"
+        style="@style/add_title_horizontal"
+        android:text="需" />
+</LinearLayout>

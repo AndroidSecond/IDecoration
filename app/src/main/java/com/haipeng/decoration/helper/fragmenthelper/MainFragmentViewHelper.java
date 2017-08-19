@@ -3,6 +3,10 @@ package com.haipeng.decoration.helper.fragmenthelper;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.fragment.HomePageFragment;
@@ -22,5 +26,15 @@ public class MainFragmentViewHelper {
     }
 
     public void initView(){
+        mFragment.etUserName = (EditText) mView.findViewById(R.id.et_name);
+        mFragment.etUserPhone = (EditText) mView.findViewById(R.id.et_phone);
+        mFragment.etUserEmail = (EditText) mView.findViewById(R.id.et_email);
+        mFragment.etUserAddress = (EditText) mView.findViewById(R.id.et_address);
+        mFragment.etDecorationStyle = (EditText) mView.findViewById(R.id.et_style);
+        mFragment.etDecorationArea = (EditText) mView.findViewById(R.id.et_area);
+        mFragment.etDecorationRequire = (EditText) mView.findViewById(R.id.et_require);
+        mFragment.imageAvator = (ImageView) mView.findViewById(R.id.iv_avator);
+        mFragment.btnCommit = (Button) mView.findViewById(R.id.btn_commit);
     }
+    
 }

@@ -11,6 +11,8 @@ public class OrderModel  extends BaseModel{
 
     private String userPhone;
 
+    private String userEmail;
+
     private String userAdress;
 
     private String decorationArea;
@@ -18,6 +20,8 @@ public class OrderModel  extends BaseModel{
     private String decorationStyle;
 
     private String decorationRequire;
+
+    private String imageAvator;
 
 
     public String getUserName() {
@@ -86,5 +90,21 @@ public class OrderModel  extends BaseModel{
 
     public void setUserUniqueNumber(long userUniqueNumber) {
         this.userUniqueNumber = userUniqueNumber;
+    }
+
+    public String getImageAvator() {
+        return imageAvator;
+    }
+
+    public void setImageAvator(String imageAvator) {
+        this.imageAvator = imageAvator;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

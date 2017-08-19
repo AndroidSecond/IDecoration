@@ -28,7 +28,7 @@ public class SignUpActivity extends BaseMainActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_up);
 
         mViewHelper = new SignUpActivityViewHelper(this);
         mController = new SignUpActivityController(this, mViewHelper);
