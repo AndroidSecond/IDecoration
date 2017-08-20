@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.haipeng.decoration.R;
@@ -35,6 +36,10 @@ public class MainFragmentViewHelper {
         mFragment.etDecorationRequire = (EditText) mView.findViewById(R.id.et_require);
         mFragment.imageAvator = (ImageView) mView.findViewById(R.id.iv_avator);
         mFragment.btnCommit = (Button) mView.findViewById(R.id.btn_commit);
+
+        mFragment.btnMyOrder = (Button) mFragment.mContentView.findViewById(R.id.btn_my_order);
+        mFragment.llMyOrder = (LinearLayout) mFragment.mContentView.findViewById(R.id.ll_my_order);
+        mFragment.llOutOfOrders = (LinearLayout) mFragment.mContentView.findViewById(R.id.ll_out_of_orders);
     }
     
 }

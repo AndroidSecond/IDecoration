@@ -5,31 +5,44 @@
     >
     <TextView
         android:id="@+id/tv_name"
-        style="@style/add_title_horizontal"
+        style="@style/add_item_order"
         android:text="姓名" />
 
     <TextView
         android:id="@+id/tv_phone"
-        style="@style/add_title_horizontal"
+        style="@style/add_item_order"
         android:text="电话" />
 
     <TextView
         android:id="@+id/tv_email"
-        style="@style/add_title_horizontal"
-        android:text="邮箱" />
+        style="@style/add_item_order"
+        android:text="邮箱"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_address"
-        style="@style/add_title_horizontal"
+        style="@style/add_item_order"
         android:text="地址" />
 
     <TextView
         android:id="@+id/tv_area"
-        style="@style/add_title_horizontal"
-        android:text="面积" />
+        style="@style/add_item_order"
+        android:text="面积"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_require"
-        style="@style/add_title_horizontal"
-        android:text="需" />
+        style="@style/add_item_order"
+        android:text="需"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tv_uniqueNumber"
+        style="@style/add_item_order"
+        android:text="需"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/btn_detail"
+        style="@style/add_item_order"
+        android:text="查看详情"
+        android:gravity="center"/>
 </LinearLayout>

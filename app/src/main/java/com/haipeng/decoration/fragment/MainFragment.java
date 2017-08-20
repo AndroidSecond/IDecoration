@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.haipeng.decoration.R;
@@ -48,6 +49,10 @@ public class MainFragment extends BaseMainFragment {
     private MainFragmentViewHelper mViewHelper;
     private MainFragmentController mController;
     public View mContentView;
+
+    public Button btnMyOrder;
+    public LinearLayout llMyOrder;
+    public LinearLayout llOutOfOrders;
 
     public MainFragment() {
         // Required empty public constructor

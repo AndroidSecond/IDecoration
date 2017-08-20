@@ -29,5 +29,8 @@ public class MineFragmentViewHelper {
         mFragment.btnSignUp = (Button) mFragment.mContentView.findViewById(R.id.btn_sign_up);
         mFragment.btnSignIn = (Button) mFragment.mContentView.findViewById(R.id.btn_sign_in);
         mFragment.tvName = (TextView) mFragment.mContentView.findViewById(R.id.tv_name);
+
+
+
     }
 }

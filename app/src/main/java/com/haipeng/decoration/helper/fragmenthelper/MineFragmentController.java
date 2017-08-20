@@ -17,7 +17,9 @@ import com.haipeng.decoration.utils.widget.MyToastUtils;
 import de.greenrobot.event.EventBus;
 import de.greenrobot.event.Subscribe;
 import de.greenrobot.event.ThreadMode;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import retrofit2.http.Url;
 
 /**
@@ -39,24 +41,44 @@ public class MineFragmentController implements View.OnClickListener {
         mFragment.btnSignUp.setOnClickListener(this);
         EventBus.getDefault().register(this);
 
-        if (MySharedprefrencesConstantUtils.getUserUniqueNumber() != 0l)
-            UrlUtils.signIn(MySharedprefrencesConstantUtils.getUserUniqueNumber(), consumer, errorConsumer);
+//        Function<Throwable, ResponseUserModel> function =
 
+
+        if (MySharedprefrencesConstantUtils.getUserUniqueNumber() != 0l) {
+            try {
+                UrlUtils.signIn(MySharedprefrencesConstantUtils.getUserUniqueNumber(), consumer, function);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+    Function<Throwable, ResponseUserModel> function = new Function<Throwable, ResponseUserModel>() {
+        @Override
+        public ResponseUserModel apply(@NonNull Throwable throwable) throws Exception {
+            return new ResponseUserModel();
+        }
+
+    };
+
 
     Consumer<ResponseUserModel> consumer = new Consumer<ResponseUserModel>() {
         @Override
         public void accept(ResponseUserModel responseUserModel) throws Exception {
-            LoginConstant.USER_UNIQUENUMBER = responseUserModel.getUniqueNumber();
-            MySharedprefrencesConstantUtils.setUserUniqueNumber(responseUserModel.getUniqueNumber());
-            showName(responseUserModel.getName());
+            if (responseUserModel.getUniqueNumber() != 0l) {
+                LoginConstant.USER_UNIQUENUMBER = responseUserModel.getUniqueNumber();
+                MySharedprefrencesConstantUtils.setUserUniqueNumber(responseUserModel.getUniqueNumber());
+                showName(responseUserModel.getName());
+            }
         }
     };
 
     Consumer<Throwable> errorConsumer = new Consumer<Throwable>() {
         @Override
         public void accept(Throwable throwable) throws Exception {
-            MyToastUtils.showToastLong(mFragment.getContext(), "mei");
+            throwable.getCause();
+//            return;
+//            MyToastUtils.showToastLong(mFragment.getContext(), "mei");
         }
     };
 

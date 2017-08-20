@@ -72,6 +72,10 @@
 
                 <TextView
                     style="@style/add_title_style"
+                    android:text="风格" />
+
+                <TextView
+                    style="@style/add_title_style"
                     android:text="需求描述" />
 
             </LinearLayout>
@@ -105,6 +109,10 @@
                     android:id="@+id/tv_area"
                     style="@style/add_title_style"
                     android:text="面积" />
+                <TextView
+                    android:id="@+id/tv_style"
+                    style="@style/add_title_style"
+                    android:text="风格" />
 
                 <TextView
                     android:id="@+id/tv_require"

@@ -24,6 +24,7 @@ public class OrderDetailActivityViewHelper {
         mActivity.tvEmail = (TextView) mActivity.findViewById(R.id.tv_email);
         mActivity.tvAddress = (TextView) mActivity.findViewById(R.id.tv_address);
         mActivity.tvArea = (TextView) mActivity.findViewById(R.id.tv_area);
+        mActivity.tvStyle = (TextView)mActivity.findViewById(R.id.tv_style);
         mActivity.tvRequire = (TextView) mActivity.findViewById(R.id.tv_area);
         mActivity.imageAvator = (ImageView) mActivity.findViewById(R.id.iv_avator);
 

@@ -16,6 +16,7 @@ import com.haipeng.decoration.fragment.MastersFragment;
 import com.haipeng.decoration.fragment.MineFragment;
 import com.haipeng.decoration.fragment.TemplatesFragment;
 import com.haipeng.decoration.listener.OnButtonsSwitchListener;
+import com.haipeng.decoration.model.OrderModel;
 import com.haipeng.decoration.model.ResponseUserModel;
 import com.haipeng.decoration.ror.UrlUtils;
 import com.haipeng.decoration.utils.MySharedprefrencesConstantUtils;
@@ -23,7 +24,9 @@ import com.haipeng.decoration.utils.StringUtils;
 import com.haipeng.decoration.utils.widget.MyToastUtils;
 
 import de.greenrobot.event.EventBus;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 /**
  * Created by Administrator on 2017/7/10.
@@ -46,18 +49,23 @@ public class LoginActivityController implements View.OnClickListener {
     Consumer<ResponseUserModel> consumer = new Consumer<ResponseUserModel>() {
         @Override
         public void accept(ResponseUserModel responseUserModel) throws Exception {
-            LoginConstant.USER_UNIQUENUMBER = responseUserModel.getUniqueNumber();
-            MySharedprefrencesConstantUtils.setUserUniqueNumber(responseUserModel.getUniqueNumber());
-            EventBus.getDefault().post(new LoginEvent(responseUserModel.getName()));
-            mActivity.finish();
+            if (responseUserModel.getUniqueNumber() != 0l) {
+                LoginConstant.USER_UNIQUENUMBER = responseUserModel.getUniqueNumber();
+                MySharedprefrencesConstantUtils.setUserUniqueNumber(responseUserModel.getUniqueNumber());
+                EventBus.getDefault().post(new LoginEvent(responseUserModel.getName()));
+                mActivity.finish();
+            }else{
+                MyToastUtils.showToastLong(mActivity,"登录失败");
+            }
         }
     };
 
-    Consumer<Throwable> errorConsumer = new Consumer<Throwable>() {
+    Function<Throwable, ResponseUserModel> function = new Function<Throwable, ResponseUserModel>() {
         @Override
-        public void accept(Throwable throwable) throws Exception {
-            MyToastUtils.showToastLong(mActivity,"登录失败");
+        public ResponseUserModel apply(@NonNull Throwable throwable) throws Exception {
+            return new ResponseUserModel();
         }
+
     };
 
 
@@ -67,7 +75,7 @@ public class LoginActivityController implements View.OnClickListener {
             case R.id.btn_commit:
                 UrlUtils.signIn(StringUtils.filterStringExe(mActivity.etAccount.getText())
                         , StringUtils.filterStringExe(mActivity.etPassword.getText())
-                        , consumer,errorConsumer);
+                        , consumer, function);
                 break;
         }
     }

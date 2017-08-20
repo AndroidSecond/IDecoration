@@ -21,6 +21,7 @@ public class OrderDetailActivity extends BaseMainActivity {
     public TextView tvEmail;
     public TextView tvAddress;
     public TextView tvArea;
+    public TextView tvStyle;
     public TextView tvRequire;
     public ImageView imageAvator;
     private OrderDetailActivityViewHelper mViewHelper;

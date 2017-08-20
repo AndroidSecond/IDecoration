@@ -11,9 +11,9 @@ public class OrderModel  extends BaseModel{
 
     private String userPhone;
 
-    private String userEmail;
-
     private String userAdress;
+
+    private String userEmail;
 
     private String decorationArea;
 

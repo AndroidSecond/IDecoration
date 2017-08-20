@@ -48,6 +48,7 @@ public class MineFragment extends BaseMainFragment {
     public Button btnSignUp;
     public TextView tvName;
 
+
     public MineFragment() {
         // Required empty public constructor
     }

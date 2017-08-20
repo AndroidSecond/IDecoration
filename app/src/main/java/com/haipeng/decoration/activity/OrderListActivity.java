@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.HomePageAdapter;
+import com.haipeng.decoration.adapter.OrderListAdapter;
 import com.haipeng.decoration.base.BaseMainActivity;
 import com.haipeng.decoration.helper.activityhelper.OrderListActivityController;
 import com.haipeng.decoration.helper.activityhelper.OrderListActivityViewHelper;
@@ -24,7 +25,7 @@ public class OrderListActivity  extends BaseMainActivity {
     private OrderListActivityController mController;
 
     public RecyclerView verticalRecyclerView;
-    public HomePageAdapter verticalAdapter;
+    public OrderListAdapter orderListAdapter;
     public SwipeRefreshLayout swipeRefreshLayout;
 
 

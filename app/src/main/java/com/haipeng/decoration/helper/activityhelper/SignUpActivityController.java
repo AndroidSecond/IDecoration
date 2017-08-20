@@ -6,13 +6,16 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.activity.SignUpActivity;
+import com.haipeng.decoration.model.ResponseUserModel;
 import com.haipeng.decoration.model.ReturnResult;
 import com.haipeng.decoration.model.UserModel;
 import com.haipeng.decoration.ror.UrlUtils;
 import com.haipeng.decoration.utils.UniqueNumberUtils;
 import com.haipeng.decoration.utils.widget.MyToastUtils;
 
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 /**
  * Created by Administrator on 2017/7/10.
@@ -44,7 +47,7 @@ public class SignUpActivityController implements View.OnClickListener {
             case R.id.back:
                 break;
             case R.id.commit:
-                UrlUtils.signUp(getUserModelJson(""), consumer, errorConsumer);
+                UrlUtils.signUp(getUserModelJson(""), consumer, function);
                 break;
             case R.id.iv_add_user:
                 break;
@@ -61,12 +64,15 @@ public class SignUpActivityController implements View.OnClickListener {
         }
     };
 
-    Consumer<Throwable> errorConsumer = new Consumer<Throwable>() {
+    Function<Throwable, ReturnResult> function = new Function<Throwable, ReturnResult>() {
         @Override
-        public void accept(Throwable throwable) throws Exception {
-            MyToastUtils.showToastLong(mActivity, "注册失败");
+        public ReturnResult apply(@NonNull Throwable throwable) throws Exception {
+            return new ReturnResult();
         }
+
     };
+
+
 
     public String getUserModelJson(String imgPath) {
         UserModel userModel = new UserModel();

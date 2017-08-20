@@ -41,7 +41,11 @@ public interface UrlService {
 
     @FormUrlEncoded
     @GET("order/queryOrder")
-    Flowable<OrderModel> getOrder(@Field("UserUniqueNumber") String id);
+    Flowable<List<OrderModel>> getOrder(@Field("UserUniqueNumber") long id);
+
+    @FormUrlEncoded
+    @GET("order/queryOrderByOrderUniqueNumber")
+    Flowable<OrderModel> getOrderByOrderUniqueNumber(@Field("OrderUniqueNumber") long id);
 
 
     @FormUrlEncoded

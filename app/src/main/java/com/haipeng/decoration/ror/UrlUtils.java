@@ -37,8 +37,10 @@ public class UrlUtils extends RetrofitUtils {
     //查询网络的Cache-Control设置。不使用缓存
     protected static final String CACHE_CONTROL_NETWORK = "max-age=0";
 
-    public static <T> void setSubscribe(Flowable<T> flowable, Consumer<T> consumer) {
+    public static <T> void setSubscribe(Flowable<T> flowable, Consumer<T> consumer, Function<Throwable, T> function) {
         flowable.subscribeOn(Schedulers.io())
+                .onErrorReturn(function)
+                .subscribeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.newThread())//子线程访问网络
                 .observeOn(AndroidSchedulers.mainThread())//回到主线程
                 .subscribe(consumer);
@@ -47,57 +49,61 @@ public class UrlUtils extends RetrofitUtils {
 
 //    = FFunction<? super Throwable, ? extends BaseModel> valueSupplier
 
-    public static void signUp(String json, Consumer<ReturnResult> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.signUp(json).doOnError(errrorConsumer), consumer);
+    public static void signUp(String json, Consumer<ReturnResult> consumer, Function<Throwable, ReturnResult> function) {
+        setSubscribe(urlService.signUp(json), consumer, function);
     }
 
-    public static void signIn(String userName, String userPassword, Consumer<ResponseUserModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.signIn(userName, userPassword), consumer);
+    public static void signIn(String userName, String userPassword, Consumer<ResponseUserModel> consumer, Function<Throwable, ResponseUserModel> function) {
+        setSubscribe(urlService.signIn(userName, userPassword), consumer, function);
     }
 
-    public static void signIn(long uniqueNumber, Consumer<ResponseUserModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.signIn(uniqueNumber).doOnError(errrorConsumer), consumer);
+    public static void signIn(long uniqueNumber, Consumer<ResponseUserModel> consumer, Function<Throwable, ResponseUserModel> function) {
+        setSubscribe(urlService.signIn(uniqueNumber), consumer, function);
     }
 
 
-    public static void addOrder(String json, Consumer<OrderModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.addOrder(json).doOnError(errrorConsumer), consumer);
+    public static void addOrder(String json, Consumer<OrderModel> consumer, Function<Throwable, OrderModel> function) {
+        setSubscribe(urlService.addOrder(json), consumer, function);
     }
 
-    public static void getOrder(String uniqueNumber, Consumer<OrderModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.getOrder(uniqueNumber).doOnError(errrorConsumer), consumer);
+    public static void getOrderByUserUniqueNumber(long userUniqueNumber, Consumer<List<OrderModel>> consumer,Function<Throwable, List<OrderModel>> function) {
+        setSubscribe(urlService.getOrder(userUniqueNumber), consumer, function);
     }
 
-    public static void queryOneTemplate(String uniqueNumber, Consumer<TemplateModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryOneTemplate(uniqueNumber).doOnError(errrorConsumer), consumer);
+    public static void getOrderByOrderUniqueNumber(long orderUniqueNumber, Consumer<OrderModel> consumer,Function<Throwable, OrderModel> function) {
+        setSubscribe(urlService.getOrderByOrderUniqueNumber(orderUniqueNumber), consumer, function);
     }
 
-    public static void queryAllTemplate(Consumer<List<TemplateModel>> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryAllTemplate().doOnError(errrorConsumer), consumer);
+    public static void queryOneTemplate(String uniqueNumber, Consumer<TemplateModel> consumer,Function<Throwable, TemplateModel> function) {
+        setSubscribe(urlService.queryOneTemplate(uniqueNumber), consumer, function);
     }
 
-    public static void queryOneVendor(String uniqueNumber, Consumer<VendorModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryOneVendor(uniqueNumber).doOnError(errrorConsumer), consumer);
+    public static void queryAllTemplate(Consumer<List<TemplateModel>> consumer,Function<Throwable, List<TemplateModel>> function) {
+        setSubscribe(urlService.queryAllTemplate(), consumer, function);
     }
 
-    public static void queryAllVendor(Consumer<List<VendorModel>> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryAllVendor().doOnError(errrorConsumer), consumer);
+    public static void queryOneVendor(String uniqueNumber, Consumer<VendorModel> consumer,Function<Throwable, VendorModel> function) {
+        setSubscribe(urlService.queryOneVendor(uniqueNumber), consumer, function);
     }
 
-    public static void queryOneMaster(String uniqueNumber, Consumer<MasterModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryOneMaster(uniqueNumber).doOnError(errrorConsumer), consumer);
+    public static void queryAllVendor(Consumer<List<VendorModel>> consumer,Function<Throwable, List<VendorModel>> function) {
+        setSubscribe(urlService.queryAllVendor(), consumer, function);
     }
 
-    public static void queryAllMaster(Consumer<List<MasterModel>> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryAllMaster().doOnError(errrorConsumer), consumer);
+    public static void queryOneMaster(String uniqueNumber, Consumer<MasterModel> consumer,Function<Throwable, MasterModel> function) {
+        setSubscribe(urlService.queryOneMaster(uniqueNumber), consumer, function);
     }
 
-    public static void queryOneRecommend(String uniqueNumber, Consumer<RecommendModel> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryOneRecommend(uniqueNumber).doOnError(errrorConsumer), consumer);
+    public static void queryAllMaster(Consumer<List<MasterModel>> consumer,Function<Throwable, List<MasterModel>> function) {
+        setSubscribe(urlService.queryAllMaster(), consumer, function);
     }
 
-    public static void queryAllRecommend(Consumer<List<RecommendModel>> consumer,Consumer<Throwable> errrorConsumer) {
-        setSubscribe(urlService.queryAllRecommend().doOnError(errrorConsumer), consumer);
+    public static void queryOneRecommend(String uniqueNumber, Consumer<RecommendModel> consumer,Function<Throwable, RecommendModel> function) {
+        setSubscribe(urlService.queryOneRecommend(uniqueNumber), consumer, function);
+    }
+
+    public static void queryAllRecommend(Consumer<List<RecommendModel>> consumer,Function<Throwable, List<RecommendModel>> function) {
+        setSubscribe(urlService.queryAllRecommend(), consumer, function);
     }
 
 }

@@ -50,7 +50,7 @@ public class MainActivityController implements OnButtonsSwitchListener {
     public void switchFragment(BaseMainFragment fragment) {
         FragmentTransaction ft = mActivity.fragmentManager.beginTransaction();
         ft.replace(R.id.fragment, fragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
 
