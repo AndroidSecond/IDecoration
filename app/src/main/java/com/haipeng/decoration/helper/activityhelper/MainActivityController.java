@@ -47,6 +47,14 @@ public class MainActivityController implements OnButtonsSwitchListener {
         ft.commit();
     }
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     public void switchFragment(BaseMainFragment fragment) {
         FragmentTransaction ft = mActivity.fragmentManager.beginTransaction();
         ft.replace(R.id.fragment, fragment);

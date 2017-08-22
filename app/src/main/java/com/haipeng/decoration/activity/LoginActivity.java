@@ -34,9 +34,21 @@ public class LoginActivity extends BaseMainActivity{
     }
 
     @Override
+    public void getConnectNetSuccess() {
+        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+        mController.refreshForLoginSuccess();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         mViewHelper.initView();
         mController.init();
     }
+
+
 }

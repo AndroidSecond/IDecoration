@@ -41,4 +41,14 @@ public class OrderDetailActivity extends BaseMainActivity {
         mViewHelper.init();
         mController.init();
     }
+
+    @Override
+    public void getConnectNetSuccess() {
+        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+        mController.refreshForLoginSuccess();
+    }
 }

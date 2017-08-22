@@ -37,6 +37,14 @@ public class OrderDetailActivityController {
         }
     }
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     Consumer<OrderModel> consumer = new Consumer<OrderModel>() {
         @Override
         public void accept(OrderModel model) throws Exception {

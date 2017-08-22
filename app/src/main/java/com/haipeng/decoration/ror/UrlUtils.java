@@ -67,11 +67,15 @@ public class UrlUtils extends RetrofitUtils {
     }
 
     public static void getOrderByUserUniqueNumber(long userUniqueNumber, Consumer<List<OrderModel>> consumer,Function<Throwable, List<OrderModel>> function) {
-        setSubscribe(urlService.getOrder(userUniqueNumber), consumer, function);
+        setSubscribe(urlService.getOrdersByUserUniqueNumber(userUniqueNumber), consumer, function);
     }
 
     public static void getOrderByOrderUniqueNumber(long orderUniqueNumber, Consumer<OrderModel> consumer,Function<Throwable, OrderModel> function) {
         setSubscribe(urlService.getOrderByOrderUniqueNumber(orderUniqueNumber), consumer, function);
+    }
+
+    public static void getAllOrder(Consumer<List<OrderModel>> consumer,Function<Throwable, List<OrderModel>> function) {
+        setSubscribe(urlService.getAllOrder(), consumer, function);
     }
 
     public static void queryOneTemplate(String uniqueNumber, Consumer<TemplateModel> consumer,Function<Throwable, TemplateModel> function) {

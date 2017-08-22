@@ -34,4 +34,14 @@ public class SignUpActivity extends BaseMainActivity{
         mController = new SignUpActivityController(this, mViewHelper);
     }
 
+    @Override
+    public void getConnectNetSuccess() {
+        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+        mController.refreshForLoginSuccess();
+    }
+
 }

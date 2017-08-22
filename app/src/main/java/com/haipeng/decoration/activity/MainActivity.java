@@ -61,6 +61,16 @@ public class MainActivity extends BaseMainActivity implements
     }
 
     @Override
+    public void getConnectNetSuccess() {
+        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+        mController.refreshForLoginSuccess();
+    }
+
+    @Override
     public void onFragmentInteraction(Uri uri) {
 
     }

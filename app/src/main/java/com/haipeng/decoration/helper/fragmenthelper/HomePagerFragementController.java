@@ -69,6 +69,14 @@ public class HomePagerFragementController implements SwipeRefreshLayout.OnRefres
 //        countUtils.setListener(this);
     }
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     @Override
     public void onRefresh() {
 

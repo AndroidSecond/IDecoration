@@ -16,4 +16,12 @@ public class MastersFragmentController {
         this.mFragment = mainFragment;
         this.viewHelper = viewHelper;
     }
+
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
 }

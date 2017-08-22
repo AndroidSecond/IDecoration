@@ -41,6 +41,14 @@ public class SignUpActivityController implements View.OnClickListener {
         mActivity.img.setOnClickListener(this);
     }
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

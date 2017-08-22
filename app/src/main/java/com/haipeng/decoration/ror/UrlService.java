@@ -40,44 +40,48 @@ public interface UrlService {
     Flowable<OrderModel> addOrder(@Field("OrderModel") String json);
 
     @FormUrlEncoded
-    @GET("order/queryOrder")
-    Flowable<List<OrderModel>> getOrder(@Field("UserUniqueNumber") long id);
+    @POST("order/queryAllOrder")
+    Flowable<List<OrderModel>> getAllOrder();
 
     @FormUrlEncoded
-    @GET("order/queryOrderByOrderUniqueNumber")
+    @POST("order/getOrderByOrderUniqueNumber")
     Flowable<OrderModel> getOrderByOrderUniqueNumber(@Field("OrderUniqueNumber") long id);
 
+    @FormUrlEncoded
+    @POST("order/getOrdersByUserUniqueNumber")
+    Flowable<List<OrderModel>> getOrdersByUserUniqueNumber(@Field("UserUniqueNumber") long id);
+
 
     @FormUrlEncoded
-    @GET("template/queryOneTemplate")
+    @POST("template/queryOneTemplate")
     Flowable<TemplateModel> queryOneTemplate(@Field("TemplateUniqueNumber") String uniqueNumber);
 
     @FormUrlEncoded
-    @GET("template/queryAllTemplate")
+    @POST("template/queryAllTemplate")
     Flowable<List<TemplateModel>> queryAllTemplate();
 
     @FormUrlEncoded
-    @GET("vendor/queryOneVendor")
+    @POST("vendor/queryOneVendor")
     Flowable<VendorModel> queryOneVendor(@Field("VendorUniqueNumber") String uniqueNumber);
 
     @FormUrlEncoded
-    @GET("vendor/queryAllVendor")
+    @POST("vendor/queryAllVendor")
     Flowable<List<VendorModel>> queryAllVendor();
 
     @FormUrlEncoded
-    @GET("master/queryOneMaster")
+    @POST("master/queryOneMaster")
     Flowable<MasterModel> queryOneMaster(@Field("MasterUniqueNumber") String uniqueNumber);
 
     @FormUrlEncoded
-    @GET("master/queryAllMaster")
+    @POST("master/queryAllMaster")
     Flowable<List<MasterModel>> queryAllMaster();
 
     @FormUrlEncoded
-    @GET("recommend/queryOneRecommend")
+    @POST("recommend/queryOneRecommend")
     Flowable<RecommendModel> queryOneRecommend(@Field("RecommendUniqueNumber") String uniqueNumber);
 
     @FormUrlEncoded
-    @GET("recommend/queryAllRecommend")
+    @POST("recommend/queryAllRecommend")
     Flowable<List<RecommendModel>> queryAllRecommend();
 
 

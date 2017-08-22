@@ -37,6 +37,14 @@ public class OrderListActivityController {
         UrlUtils.getOrderByUserUniqueNumber(LoginConstant.USER_UNIQUENUMBER,consumer,function);
     }
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     Consumer<List<OrderModel>> consumer = new Consumer<List<OrderModel>>() {
         @Override
         public void accept(List<OrderModel> models) throws Exception {

@@ -66,6 +66,16 @@ public class HomePageFragment extends BaseMainFragment {
         return mContentView;
     }
 
+    @Override
+    public void getConnectNetSuccess() {
+        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+        mController.refreshForLoginSuccess();
+    }
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

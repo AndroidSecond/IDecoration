@@ -16,4 +16,12 @@ public class TemplatesFragmentsController {
         this.viewHelper = viewHelper;
     }
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
 }

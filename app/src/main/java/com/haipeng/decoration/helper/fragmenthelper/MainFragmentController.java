@@ -56,6 +56,15 @@ public class MainFragmentController implements View.OnClickListener {
 
     }
 
+
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     Consumer<List<OrderModel>> consumer = new Consumer<List<OrderModel>>() {
         @Override
         public void accept(List<OrderModel> models) throws Exception {
@@ -88,6 +97,7 @@ public class MainFragmentController implements View.OnClickListener {
             } else {
                 if (TYPE_REQUEST == TYPE_REQUEST_GET_ORDER_PRE) {
                     mFragment.llMyOrder.setVisibility(View.GONE);
+                    mFragment.llOutOfOrders.setVisibility(View.GONE);
                 } else if (TYPE_REQUEST == TYPE_REQUEST_CHECK_ORDER) {
                     mFragment.llMyOrder.setVisibility(View.GONE);
                     MyToastUtils.showToastLong(mFragment.getContext(), "没发现您的订单");

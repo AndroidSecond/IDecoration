@@ -43,4 +43,14 @@ public class OrderListActivity  extends BaseMainActivity {
         mViewHelper.initView();
         mController.init();
     }
+
+    @Override
+    public void getConnectNetSuccess() {
+        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+        mController.refreshForLoginSuccess();
+    }
 }

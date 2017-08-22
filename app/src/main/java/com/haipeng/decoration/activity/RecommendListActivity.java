@@ -15,4 +15,13 @@ public class RecommendListActivity extends BaseMainActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    @Override
+    public void getConnectNetSuccess() {
+//        mController.refreshForConnectNet();
+    }
+
+    @Override
+    public void loginSuccess() {
+//        mController.refreshForLoginSuccess();
+    }
 }

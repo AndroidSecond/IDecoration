@@ -60,6 +60,14 @@ public class LoginActivityController implements View.OnClickListener {
         }
     };
 
+    public void refreshForConnectNet(){
+
+    }
+
+    public void refreshForLoginSuccess(){
+
+    }
+
     Function<Throwable, ResponseUserModel> function = new Function<Throwable, ResponseUserModel>() {
         @Override
         public ResponseUserModel apply(@NonNull Throwable throwable) throws Exception {
