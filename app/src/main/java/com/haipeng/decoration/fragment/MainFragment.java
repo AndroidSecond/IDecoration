@@ -1,6 +1,7 @@
 package com.haipeng.decoration.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.HomePageAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
 import com.haipeng.decoration.helper.fragmenthelper.MainFragmentViewHelper;
 import com.haipeng.decoration.helper.fragmenthelper.MainFragmentController;
+import com.haipeng.decoration.utils.MySharedprefrencesConstantUtils;
 
 /**
  * 主页我要装修的页面
@@ -98,6 +101,11 @@ public class MainFragment extends BaseMainFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        if (MySharedprefrencesConstantUtils.getUserUniqueNumber() == 0l) {
+            Toast.makeText(getContext(), "您还未登录", Toast.LENGTH_SHORT).show();
+        }
+
         mViewHelper.initView();
         mController.init();
     }

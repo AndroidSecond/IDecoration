@@ -26,7 +26,7 @@ public class MainFragmentViewHelper {
         mView = mFragment.mContentView;
     }
 
-    public void initView(){
+    public void initView() {
         mFragment.etUserName = (EditText) mView.findViewById(R.id.et_name);
         mFragment.etUserPhone = (EditText) mView.findViewById(R.id.et_phone);
         mFragment.etUserEmail = (EditText) mView.findViewById(R.id.et_email);
@@ -40,6 +40,9 @@ public class MainFragmentViewHelper {
         mFragment.btnMyOrder = (Button) mFragment.mContentView.findViewById(R.id.btn_my_order);
         mFragment.llMyOrder = (LinearLayout) mFragment.mContentView.findViewById(R.id.ll_my_order);
         mFragment.llOutOfOrders = (LinearLayout) mFragment.mContentView.findViewById(R.id.ll_out_of_orders);
+
+        mFragment.llMyOrder.setVisibility(View.GONE);
+        mFragment.llOutOfOrders.setVisibility(View.INVISIBLE);
     }
-    
+
 }

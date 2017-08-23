@@ -46,6 +46,8 @@
         <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".activity.SignUpActivity"></activity>
         <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.OrderDetailActivity"></activity>
+        <activity android:name=".activity.OrderListActivity"></activity>
     </application>
 
 </manifest>

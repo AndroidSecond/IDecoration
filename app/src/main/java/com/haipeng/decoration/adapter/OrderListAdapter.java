@@ -31,6 +31,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<ItemOrderViewHelper> 
 
     public OrderListAdapter(Activity mContext) {
         this.mContext = mContext;
+        mInflater = LayoutInflater.from(mContext);
     }
 
     public void setData(List<OrderModel> list) {
@@ -41,6 +42,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<ItemOrderViewHelper> 
     @Override
     public ItemOrderViewHelper onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_order, parent, false);
+
         ItemOrderViewHelper viewHelper = new ItemOrderViewHelper(view);
         viewHelper.tvName = (TextView) view.findViewById(R.id.tv_name);
 
