@@ -3,6 +3,7 @@ package com.haipeng.decoration.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainActivity;
 
 /**
@@ -14,6 +15,7 @@ public class RecommendDetailActivity  extends BaseMainActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recommend_detail);
     }
 
     @Override

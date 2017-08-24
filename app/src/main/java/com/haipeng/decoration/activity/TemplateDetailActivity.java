@@ -2,7 +2,10 @@ package com.haipeng.decoration.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainActivity;
 
 /**
@@ -11,14 +14,18 @@ import com.haipeng.decoration.base.BaseMainActivity;
 
 public class TemplateDetailActivity extends BaseMainActivity {
 
+    public ImageView imageAvator;
+    public TextView tvTitle, tvMasterId, tvVendorId;
+    
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_template_detail);
     }
 
     @Override
     public void getConnectNetSuccess() {
-//        mController.refreshForConnectNet();
+
     }
 
     @Override
