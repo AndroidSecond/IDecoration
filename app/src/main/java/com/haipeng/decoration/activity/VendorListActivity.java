@@ -24,6 +24,8 @@ public class VendorListActivity extends BaseMainActivity {
     public VendorListAdapter orderListAdapter;
     public SwipeRefreshLayout swipeRefreshLayout;
 
+    public VendorListAdapter listAdapter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -48,6 +48,12 @@
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.OrderDetailActivity"></activity>
         <activity android:name=".activity.OrderListActivity"></activity>
+        <activity android:name=".activity.MasterDetailActivity"></activity>
+        <activity android:name=".activity.VendorListActivity"></activity>
+        <activity android:name=".activity.VendorDetailActivity"></activity>
+        <activity android:name=".activity.RecommendDetailActivity"></activity>
+        <activity android:name=".activity.MineInfoDetailActivity"></activity>
+        <activity android:name=".activity.TemplateDetailActivity"></activity>
     </application>
 
 </manifest>

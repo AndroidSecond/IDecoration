@@ -78,36 +78,36 @@ public class UrlUtils extends RetrofitUtils {
         setSubscribe(urlService.getAllOrder(), consumer, function);
     }
 
-    public static void queryOneTemplate(String uniqueNumber, Consumer<TemplateModel> consumer,Function<Throwable, TemplateModel> function) {
-        setSubscribe(urlService.queryOneTemplate(uniqueNumber), consumer, function);
+    public static void getTemplate(long uniqueNumber, Consumer<TemplateModel> consumer,Function<Throwable, TemplateModel> function) {
+        setSubscribe(urlService.getTemplate(uniqueNumber), consumer, function);
     }
 
-    public static void queryAllTemplate(Consumer<List<TemplateModel>> consumer,Function<Throwable, List<TemplateModel>> function) {
-        setSubscribe(urlService.queryAllTemplate(), consumer, function);
+    public static void getAllTemplate(Consumer<List<TemplateModel>> consumer,Function<Throwable, List<TemplateModel>> function) {
+        setSubscribe(urlService.getAllTemplate(), consumer, function);
     }
 
-    public static void queryOneVendor(String uniqueNumber, Consumer<VendorModel> consumer,Function<Throwable, VendorModel> function) {
-        setSubscribe(urlService.queryOneVendor(uniqueNumber), consumer, function);
+    public static void getVendor(long uniqueNumber, Consumer<VendorModel> consumer,Function<Throwable, VendorModel> function) {
+        setSubscribe(urlService.getVendor(uniqueNumber), consumer, function);
     }
 
-    public static void queryAllVendor(Consumer<List<VendorModel>> consumer,Function<Throwable, List<VendorModel>> function) {
-        setSubscribe(urlService.queryAllVendor(), consumer, function);
+    public static void getAllVendor(Consumer<List<VendorModel>> consumer,Function<Throwable, List<VendorModel>> function) {
+        setSubscribe(urlService.getAllVendor(), consumer, function);
     }
 
-    public static void queryOneMaster(String uniqueNumber, Consumer<MasterModel> consumer,Function<Throwable, MasterModel> function) {
-        setSubscribe(urlService.queryOneMaster(uniqueNumber), consumer, function);
+    public static void getMaster(long uniqueNumber, Consumer<MasterModel> consumer,Function<Throwable, MasterModel> function) {
+        setSubscribe(urlService.getMaster(uniqueNumber), consumer, function);
     }
 
-    public static void queryAllMaster(Consumer<List<MasterModel>> consumer,Function<Throwable, List<MasterModel>> function) {
-        setSubscribe(urlService.queryAllMaster(), consumer, function);
+    public static void getAllMaster(Consumer<List<MasterModel>> consumer,Function<Throwable, List<MasterModel>> function) {
+        setSubscribe(urlService.getAllMaster(), consumer, function);
     }
 
-    public static void queryOneRecommend(String uniqueNumber, Consumer<RecommendModel> consumer,Function<Throwable, RecommendModel> function) {
-        setSubscribe(urlService.queryOneRecommend(uniqueNumber), consumer, function);
+    public static void getRecommend(long uniqueNumber, Consumer<RecommendModel> consumer,Function<Throwable, RecommendModel> function) {
+        setSubscribe(urlService.getRecommend(uniqueNumber), consumer, function);
     }
 
-    public static void queryAllRecommend(Consumer<List<RecommendModel>> consumer,Function<Throwable, List<RecommendModel>> function) {
-        setSubscribe(urlService.queryAllRecommend(), consumer, function);
+    public static void getAllRecommend(Consumer<List<RecommendModel>> consumer,Function<Throwable, List<RecommendModel>> function) {
+        setSubscribe(urlService.getAllRecommend(), consumer, function);
     }
 
 }

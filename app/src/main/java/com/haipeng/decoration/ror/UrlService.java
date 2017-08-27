@@ -53,36 +53,36 @@ public interface UrlService {
 
 
     @FormUrlEncoded
-    @POST("template/queryOneTemplate")
-    Flowable<TemplateModel> queryOneTemplate(@Field("TemplateUniqueNumber") String uniqueNumber);
+    @POST("template/queryTemplateByUniqueNumber")
+    Flowable<TemplateModel> getTemplate(@Field("TemplateUniqueNumber") long uniqueNumber);
 
     @FormUrlEncoded
     @POST("template/queryAllTemplate")
-    Flowable<List<TemplateModel>> queryAllTemplate();
+    Flowable<List<TemplateModel>> getAllTemplate();
 
     @FormUrlEncoded
-    @POST("vendor/queryOneVendor")
-    Flowable<VendorModel> queryOneVendor(@Field("VendorUniqueNumber") String uniqueNumber);
+    @POST("vendor/queryVendorByUniqueNumber")
+    Flowable<VendorModel> getVendor(@Field("VendorUniqueNumber") long uniqueNumber);
 
     @FormUrlEncoded
     @POST("vendor/queryAllVendor")
-    Flowable<List<VendorModel>> queryAllVendor();
+    Flowable<List<VendorModel>> getAllVendor();
 
     @FormUrlEncoded
-    @POST("master/queryOneMaster")
-    Flowable<MasterModel> queryOneMaster(@Field("MasterUniqueNumber") String uniqueNumber);
+    @POST("master/queryMasterByUniqueNumber")
+    Flowable<MasterModel> getMaster(@Field("MasterUniqueNumber") long uniqueNumber);
+
+//    @FormUrlEncoded（）
+    @GET("master/queryAllMaster")
+    Flowable<List<MasterModel>> getAllMaster();
 
     @FormUrlEncoded
-    @POST("master/queryAllMaster")
-    Flowable<List<MasterModel>> queryAllMaster();
-
-    @FormUrlEncoded
-    @POST("recommend/queryOneRecommend")
-    Flowable<RecommendModel> queryOneRecommend(@Field("RecommendUniqueNumber") String uniqueNumber);
+    @POST("recommend/queryRecommendByUniqueNumber")
+    Flowable<RecommendModel> getRecommend(@Field("RecommendUniqueNumber") long uniqueNumber);
 
     @FormUrlEncoded
     @POST("recommend/queryAllRecommend")
-    Flowable<List<RecommendModel>> queryAllRecommend();
+    Flowable<List<RecommendModel>> getAllRecommend();
 
 
 

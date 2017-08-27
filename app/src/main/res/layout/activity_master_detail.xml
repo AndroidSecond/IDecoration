@@ -142,7 +142,7 @@
                 android:id="@+id/commit"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
-                android:background="@color/colorGreenC"
+                android:background="@color/colorGreen"
                 android:text="确定"
                 android:textSize="30sp" />
         </LinearLayout>

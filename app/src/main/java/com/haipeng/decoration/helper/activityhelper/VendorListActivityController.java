@@ -3,6 +3,7 @@ package com.haipeng.decoration.helper.activityhelper;
 import com.haipeng.decoration.activity.VendorListActivity;
 import com.haipeng.decoration.adapter.VendorListAdapter;
 import com.haipeng.decoration.model.VendorModel;
+import com.haipeng.decoration.ror.UrlUtils;
 import com.haipeng.decoration.utils.widget.MyToastUtils;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class VendorListActivityController {
 
     VendorListActivity mActivity;
     VendorListActivityViewHelper mViewHelper;
+    List<VendorModel> models;
 
     public VendorListActivityController(VendorListActivity mActivity, VendorListActivityViewHelper mViewHelper) {
         this.mActivity = mActivity;
@@ -28,8 +30,9 @@ public class VendorListActivityController {
 
     public void init(){
 
-        mActivity.orderListAdapter = new VendorListAdapter(mActivity);
-        mActivity.verticalRecyclerView.setAdapter(mActivity.orderListAdapter);
+        mActivity.listAdapter = new VendorListAdapter(mActivity);
+        mActivity.verticalRecyclerView.setAdapter(mActivity.listAdapter);
+        UrlUtils.getAllVendor(consumer,function);
 
 //        UrlUtils.getVendorByUserUniqueNumber(LoginConstant.USER_UNIQUENUMBER,consumer,function);
     }
@@ -46,7 +49,7 @@ public class VendorListActivityController {
         @Override
         public void accept(List<VendorModel> models) throws Exception {
             if (models.size() != 0) {
-                mActivity.orderListAdapter.setData(models);
+                mActivity.listAdapter.setData(models);
             } else {
                 MyToastUtils.showToastLong(mActivity, "查询失败");
             }

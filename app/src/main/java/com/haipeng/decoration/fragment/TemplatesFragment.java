@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.HomePageAdapter;
+import com.haipeng.decoration.adapter.TemplatesAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
 import com.haipeng.decoration.helper.fragmenthelper.TemplatesFragmentsController;
 import com.haipeng.decoration.helper.fragmenthelper.TemplatesFragmentsViewHelper;
@@ -36,6 +37,8 @@ public class TemplatesFragment extends BaseMainFragment {
     public RecyclerView verticalRecyclerView;
     public HomePageAdapter verticalAdapter;
     public SwipeRefreshLayout swipeRefreshLayout;
+    public TemplatesAdapter adapter;
+
 
     public TemplatesFragment() {
         // Required empty public constructor

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.adapter.HomePageAdapter;
+import com.haipeng.decoration.adapter.MastersAdapter;
 import com.haipeng.decoration.base.BaseMainFragment;
 import com.haipeng.decoration.helper.fragmenthelper.MastersFragmentController;
 import com.haipeng.decoration.helper.fragmenthelper.MastersFragmentViewHelper;
@@ -37,6 +38,8 @@ public class MastersFragment extends BaseMainFragment {
     public RecyclerView verticalRecyclerView;
     public HomePageAdapter verticalAdapter;
     public SwipeRefreshLayout swipeRefreshLayout;
+
+    public MastersAdapter adapter;
 
     public MastersFragment() {
         // Required empty public constructor
@@ -79,6 +82,12 @@ public class MastersFragment extends BaseMainFragment {
         return mContentView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewHelper.initView();
+        mController.init();
+    }
 
     @Override
     public void getConnectNetSuccess() {
