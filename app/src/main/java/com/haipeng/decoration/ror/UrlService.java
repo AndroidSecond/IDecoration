@@ -56,8 +56,7 @@ public interface UrlService {
     @POST("template/queryTemplateByUniqueNumber")
     Flowable<TemplateModel> getTemplate(@Field("TemplateUniqueNumber") long uniqueNumber);
 
-    @FormUrlEncoded
-    @POST("template/queryAllTemplate")
+    @GET("template/queryAllTemplate")
     Flowable<List<TemplateModel>> getAllTemplate();
 
     @FormUrlEncoded

@@ -39,6 +39,9 @@ public class TemplateDetailActivityController  {
         public void accept(TemplateModel model) throws Exception {
             if (model.getUniqueNumber() != 0l) {
 
+                mActivity.tvTitle.setText(model.getTitle());
+                mActivity.tvMasterId.setText(model.getMasterUniqueNumber());
+                mActivity.tvVendorId.setText(model.getVendorUniqueNumber());
                 ImageLoader.getInstance().displayImage(model.getImageAvator(), mActivity.imageAvator);
             } else {
                 MyToastUtils.showToastLong(mActivity, "查询失败");

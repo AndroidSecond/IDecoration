@@ -1,6 +1,7 @@
 package com.haipeng.decoration.helper.fragmenthelper;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -22,6 +23,10 @@ public class TemplatesFragmentsViewHelper {
 
     public void initView(){
         mFragment.verticalRecyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view_vertical);
+        LinearLayoutManager VLM = new LinearLayoutManager(mFragment.getActivity());
+        VLM.setOrientation(LinearLayoutManager.VERTICAL);
+        mFragment.verticalRecyclerView.setHasFixedSize(true);
+        mFragment.verticalRecyclerView.setLayoutManager(VLM);
         mFragment.swipeRefreshLayout = (SwipeRefreshLayout) mView.findViewById(R.id.sr_view_vertical);
     }
 }

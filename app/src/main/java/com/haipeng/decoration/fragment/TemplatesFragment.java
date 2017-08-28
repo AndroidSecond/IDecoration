@@ -35,7 +35,6 @@ public class TemplatesFragment extends BaseMainFragment {
     public View mContentView;
 
     public RecyclerView verticalRecyclerView;
-    public HomePageAdapter verticalAdapter;
     public SwipeRefreshLayout swipeRefreshLayout;
     public TemplatesAdapter adapter;
 
@@ -79,6 +78,13 @@ public class TemplatesFragment extends BaseMainFragment {
         viewHelper = new TemplatesFragmentsViewHelper(this);
         mController = new TemplatesFragmentsController(this, viewHelper);
         return mContentView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewHelper.initView();
+        mController.init();
     }
 
     @Override

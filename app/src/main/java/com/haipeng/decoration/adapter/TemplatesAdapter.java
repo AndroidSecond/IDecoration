@@ -60,15 +60,15 @@ public class TemplatesAdapter extends RecyclerView.Adapter<ItemTemplateViewHelpe
         TemplateModel model = models.get(position);
         holder.tvName.setText(model.getTitle());
         holder.tvIntro.setText("");
-        ImageLoader.getInstance().displayImage(model.getImageAvator(),holder.imageAvator);
+        ImageLoader.getInstance().displayImage(model.getImageAvator(), holder.imageAvator);
         holder.rlContent.setOnClickListener(this);
-        holder.rlContent.setTag(models.get(position));
+        holder.rlContent.setTag(models.get(position).getUniqueNumber());
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_detail:
+            case R.id.rl_content:
                 Intent intent = new Intent(mContext, TemplateDetailActivity.class);
                 intent.putExtra(TemplateDetailActivityController.TEMPLATE_UNIQUENMBER_KEY, Long.valueOf(v.getTag().toString()));
                 mContext.startActivity(intent);
