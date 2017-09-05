@@ -1,5 +1,6 @@
 package com.haipeng.decoration.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +29,7 @@ import java.util.List;
 public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mInflater;
-    private Context mContext;
+    private Activity mContext;
     int TYPE_PAGER = 1, TYPE_HORI = 2, TYPE_NORMAL = 3;
     ChildRecommendNaviViewPagerAdapter childPagerAdapter;
     ChildRecommendHoriAdapter childHoriAdapter;
@@ -45,7 +46,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         data.add("c");
     }
 
-    public HomePageAdapter(Context context) {
+    public HomePageAdapter(Activity context) {
         this.mDatas = mDatas;
         this.mContext = context;
         mInflater = LayoutInflater.from(mContext);
@@ -97,8 +98,9 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof RecommendPagerViewHolder) {
             RecommendPagerViewHolder pagerViewHolder = (RecommendPagerViewHolder) holder;
-            childPagerAdapter = new ChildRecommendNaviViewPagerAdapter(pagerViewHolder.viewPager.getViews(mContext));
+            childPagerAdapter = new ChildRecommendNaviViewPagerAdapter(mContext);
             pagerViewHolder.viewPager.setAdapter(childPagerAdapter);
+            pagerViewHolder.viewPager.init(mContext,childPagerAdapter);
         } else if (holder instanceof RecommendHoriViewHolder) {
             RecommendHoriViewHolder horiViewHolder = (RecommendHoriViewHolder) holder;
             // 横向recyclerView初始化

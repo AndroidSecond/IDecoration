@@ -79,8 +79,7 @@ public interface UrlService {
     @POST("recommend/queryRecommendByUniqueNumber")
     Flowable<RecommendModel> getRecommend(@Field("RecommendUniqueNumber") long uniqueNumber);
 
-    @FormUrlEncoded
-    @POST("recommend/queryAllRecommend")
+    @GET("recommend/queryAllRecommend")
     Flowable<List<RecommendModel>> getAllRecommend();
 
 

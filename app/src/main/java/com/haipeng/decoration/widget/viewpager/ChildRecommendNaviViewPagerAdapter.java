@@ -1,9 +1,13 @@
 package com.haipeng.decoration.widget.viewpager;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.haipeng.decoration.listener.OnCountListener;
 import com.haipeng.decoration.utils.CountUtils;
@@ -14,18 +18,40 @@ import java.util.List;
  * Created by Administrator on 2017/7/10.
  */
 
-public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter{
+public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter {
 
 
-    List<ImageView> mViewList;
+    List<RelativeLayout> mViewList;
+    Activity mContext;
+    private int childCount = 0;
 
-    public ChildRecommendNaviViewPagerAdapter(List<ImageView> viewList) {
-        mViewList = viewList;
+    public ChildRecommendNaviViewPagerAdapter(Activity context) {
+        mContext = context;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        childCount = getCount();
+        super.notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return mViewList.size();
+        return mViewList == null ? 0 : mViewList.size();
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        if (childCount > 0) {
+            childCount--;
+            return POSITION_NONE;
+        }
+        return super.getItemPosition(object);
+    }
+
+    public void setData(List<RelativeLayout> linearLayouts) {
+        mViewList = linearLayouts;
+        notifyDataSetChanged();
     }
 
     @Override
