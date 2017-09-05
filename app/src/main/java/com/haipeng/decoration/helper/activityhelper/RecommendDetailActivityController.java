@@ -1,6 +1,7 @@
 package com.haipeng.decoration.helper.activityhelper;
 
 
+import com.haipeng.decoration.R;
 import com.haipeng.decoration.activity.RecommendDetailActivity;
 import com.haipeng.decoration.model.RecommendModel;
 import com.haipeng.decoration.ror.UrlUtils;
@@ -20,6 +21,7 @@ public class RecommendDetailActivityController {
     RecommendDetailActivity mActivity;
     RecommendDetailActivityViewHelper mViewHelper;
     public static String RECOMMEND_UNIQUENMBER_KEY = "recommend_unique_key";
+
     public RecommendDetailActivityController(RecommendDetailActivity mainActivity, RecommendDetailActivityViewHelper viewHelper) {
         mActivity = mainActivity;
         mViewHelper = viewHelper;
@@ -37,7 +39,9 @@ public class RecommendDetailActivityController {
         @Override
         public void accept(RecommendModel model) throws Exception {
             if (model.getUniqueNumber() != 0l) {
-
+                mActivity.tvTitle.setText(model.getTitle());
+                mActivity.tvTitle.setText(model.getType());
+                mActivity.ivAvator.setImageResource(R.mipmap.bg_teacher_online);
 //                ImageLoader.getInstance().displayImage(model.getImageAvator(), mActivity.imageAvator);
             } else {
                 MyToastUtils.showToastLong(mActivity, "查询失败");

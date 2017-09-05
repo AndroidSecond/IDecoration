@@ -124,6 +124,7 @@ public class ChildRecommendNaviViewPager extends ViewPager implements OnCountLis
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, 400);
 
         for (int i = 0; i < models.size(); i++) {
+            RecommendModel model = models.get(i);
             RelativeLayout ll = new RelativeLayout(context);
             ImageView iv = new ImageView(context);
             TextView tv = new TextView(context);
@@ -132,12 +133,14 @@ public class ChildRecommendNaviViewPager extends ViewPager implements OnCountLis
             iv.setLayoutParams(layoutParams);
             iv.setImageResource(R.mipmap.bg_student_online);
 
-            tv.setText(models.get(i).getTitle());
+            tv.setText(model.getTitle());
             tv.setTextColor(Color.BLACK);
 
             tv.setTextSize(50f);
             ll.addView(iv);
             ll.addView(tv);
+            ll.setTag(model.getUniqueNumber());
+
             viewList.add(ll);
         }
 

@@ -2,6 +2,7 @@ package com.haipeng.decoration.widget.viewpager;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.haipeng.decoration.activity.RecommendDetailActivity;
+import com.haipeng.decoration.helper.activityhelper.RecommendDetailActivityController;
 import com.haipeng.decoration.listener.OnCountListener;
 import com.haipeng.decoration.utils.CountUtils;
 
@@ -68,7 +71,16 @@ public class ChildRecommendNaviViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(mViewList.get(position % mViewList.size()));
-        return mViewList.get(position % mViewList.size());
+        View view = mViewList.get(position % mViewList.size());
+        container.addView(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, RecommendDetailActivity.class);
+                intent.putExtra(RecommendDetailActivityController.RECOMMEND_UNIQUENMBER_KEY, Long.valueOf(String.valueOf(v.getTag())));
+                mContext.startActivity(intent);
+            }
+        });
+        return view;
     }
 }

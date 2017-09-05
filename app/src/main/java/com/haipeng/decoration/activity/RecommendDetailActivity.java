@@ -2,6 +2,8 @@ package com.haipeng.decoration.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.haipeng.decoration.R;
 import com.haipeng.decoration.base.BaseMainActivity;
@@ -17,12 +19,23 @@ public class RecommendDetailActivity  extends BaseMainActivity {
     RecommendDetailActivityViewHelper mViewHelper;
     RecommendDetailActivityController mController;
 
+    public TextView tvTitle;
+    public TextView tvType;
+    public ImageView ivAvator;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommend_detail);
         mViewHelper = new RecommendDetailActivityViewHelper(this);
         mController = new RecommendDetailActivityController(this,mViewHelper);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mViewHelper.initView();
+        mController.init();
     }
 
     @Override

@@ -22,7 +22,7 @@
                 android:layout_alignParentLeft="true"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:text="我的装修"
+                android:text="推荐"
                 android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
@@ -52,31 +52,36 @@
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="姓名" />
+                    android:text="标题" />
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="电话" />
+                    android:text="类型" />
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="邮箱" />
+                    android:text="邮箱"
+                    android:visibility="gone"/>
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="地址" />
+                    android:text="地址"
+                    android:visibility="gone"/>
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="面积" />
+                    android:text="面积"
+                    android:visibility="gone"/>
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="风格" />
+                    android:text="风格"
+                    android:visibility="gone"/>
 
                 <TextView
                     style="@style/add_title_style"
-                    android:text="需求描述" />
+                    android:text="需求描述"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
@@ -86,40 +91,45 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_name"
+                    android:id="@+id/tv_title"
                     style="@style/add_title_style"
-                    android:text="姓名" />
+                    android:text="标题" />
 
                 <TextView
-                    android:id="@+id/tv_phone"
+                    android:id="@+id/tv_type"
                     style="@style/add_title_style"
-                    android:text="电话" />
+                    android:text="类型" />
 
                 <TextView
                     android:id="@+id/tv_email"
                     style="@style/add_title_style"
-                    android:text="邮箱" />
+                    android:text="邮箱"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tv_address"
                     style="@style/add_title_style"
-                    android:text="地址" />
+                    android:text="地址"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tv_area"
                     style="@style/add_title_style"
-                    android:text="面积" />
+                    android:text="面积"
+                    android:visibility="gone"/>
                 <TextView
                     android:id="@+id/tv_style"
                     style="@style/add_title_style"
-                    android:text="风格" />
+                    android:text="风格"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tv_require"
                     style="@style/add_title_style"
                     android:layout_height="100dp"
                     android:gravity="center"
-                    android:text="需求描述" />
+                    android:text="需求描述"
+                    android:visibility="gone"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -129,9 +139,6 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
-                style="@style/add_title_style"
-                android:text="添加照片" />
 
             <ImageView
                 android:id="@+id/iv_avator"
@@ -144,7 +151,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
             <Button
                 android:layout_width="300dp"
